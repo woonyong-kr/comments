@@ -97,8 +97,8 @@ main {
   /* 강조/포커스 */
   --color-accent-fg: var(--c-accent);
   --color-accent-emphasis: var(--c-accent);
-  --color-accent-muted: color-mix(in srgb, var(--c-accent) 40%, #fff);
-  --color-accent-subtle: color-mix(in srgb, var(--c-accent) 12%, #fff);
+  --color-accent-muted: var(--c-border);  
+  --color-accent-subtle: var(--c-soft-2); 
    
   /* 상태색(성공/경고/위험) */
   --color-success-fg: #1a7f37;
