@@ -1,12 +1,31 @@
+/* =========================================================
+   0) 사이트 공통 팔레트 (요청 팔레트 그대로)
+   ========================================================= */
+:root{
+  --c-accent: #2F81F7;        /* 포커스/강조 */
+  --c-black:  #000;
+  --c-white:  #FFF;
+  --c-border: #eaeaea;        /* 연한 경계 */
+  --c-border-strong:#d1d5db;  /* 살짝 진한 경계 */
+  --c-muted:  #666;
+  --c-soft:   #ededed;        /* 인라인 코드/강조 배경 */
+  --c-soft-2: #f6f6f6;        /* 인용·서브 캔버스 */
+}
+
+/* =========================================================
+   1) giscus Light theme 변수(Primer 토큰) → 위 팔레트로 매핑
+   - 원본 키는 유지하고 값만 치환해 안전하게 동작
+   ========================================================= */
 main {
+  /* Prettylights(코드 하이라이트) — 포인트/중립만 팔레트로 보정 */
   --color-prettylights-syntax-comment: #6e7781;
-  --color-prettylights-syntax-constant: #0550ae;
-  --color-prettylights-syntax-entity: #8250df;
-  --color-prettylights-syntax-storage-modifier-import: #24292f;
-  --color-prettylights-syntax-entity-tag: #116329;
+  --color-prettylights-syntax-constant: var(--c-accent);
+  --color-prettylights-syntax-entity: #6e59f9;
+  --color-prettylights-syntax-storage-modifier-import: #1f2328;
+  --color-prettylights-syntax-entity-tag: #166534;
   --color-prettylights-syntax-keyword: #cf222e;
   --color-prettylights-syntax-string: #0a3069;
-  --color-prettylights-syntax-variable: #953800;
+  --color-prettylights-syntax-variable: #b54708;
   --color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
   --color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
   --color-prettylights-syntax-invalid-illegal-bg: #82071e;
@@ -14,7 +33,7 @@ main {
   --color-prettylights-syntax-carriage-return-bg: #cf222e;
   --color-prettylights-syntax-string-regexp: #116329;
   --color-prettylights-syntax-markup-list: #3b2300;
-  --color-prettylights-syntax-markup-heading: #0550ae;
+  --color-prettylights-syntax-markup-heading: var(--c-accent);
   --color-prettylights-syntax-markup-italic: #24292f;
   --color-prettylights-syntax-markup-bold: #24292f;
   --color-prettylights-syntax-markup-deleted-text: #82071e;
@@ -24,51 +43,63 @@ main {
   --color-prettylights-syntax-markup-changed-text: #953800;
   --color-prettylights-syntax-markup-changed-bg: #ffd8b5;
   --color-prettylights-syntax-markup-ignored-text: #eaeef2;
-  --color-prettylights-syntax-markup-ignored-bg: #0550ae;
-  --color-prettylights-syntax-meta-diff-range: #8250df;
+  --color-prettylights-syntax-markup-ignored-bg: var(--c-accent);
+  --color-prettylights-syntax-meta-diff-range: #6e59f9;
   --color-prettylights-syntax-brackethighlighter-angle: #57606a;
   --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
   --color-prettylights-syntax-constant-other-reference-link: #0a3069;
-  --color-btn-text: #24292f;
-  --color-btn-bg: #f6f8fa;
-  --color-btn-border: rgb(31 35 40 / 15%);
+
+  /* 기본 버튼(흰 바탕) → 경계/호버를 팔레트의 보더/소프트로 */
+  --color-btn-text: #1f2328;
+  --color-btn-bg: var(--c-white);
+  --color-btn-border: var(--c-border);
   --color-btn-shadow: 0 1px 0 rgb(31 35 40 / 4%);
   --color-btn-inset-shadow: inset 0 1px 0 rgb(255 255 255 / 25%);
-  --color-btn-hover-bg: #f3f4f6;
-  --color-btn-hover-border: rgb(31 35 40 / 15%);
-  --color-btn-active-bg: hsl(220deg 14% 93% / 100%);
-  --color-btn-active-border: rgb(31 35 40 / 15%);
-  --color-btn-selected-bg: hsl(220deg 14% 94% / 100%);
+  --color-btn-hover-bg: var(--c-white);
+  --color-btn-hover-border: var(--c-border-strong);
+  --color-btn-active-bg: var(--c-soft-2);
+  --color-btn-active-border: var(--c-border-strong);
+  --color-btn-selected-bg: var(--c-soft-2);
+
+  /* 주요 버튼(로그인/등록) → 기본 검정, 호버/선택은 포인트 */
   --color-btn-primary-text: #fff;
-  --color-btn-primary-bg: #1f883d;
-  --color-btn-primary-border: rgb(31 35 40 / 15%);
+  --color-btn-primary-bg: var(--c-black);
+  --color-btn-primary-border: var(--c-border);
   --color-btn-primary-shadow: 0 1px 0 rgb(31 35 40 / 10%);
   --color-btn-primary-inset-shadow: inset 0 1px 0 rgb(255 255 255 / 3%);
-  --color-btn-primary-hover-bg: #1a7f37;
-  --color-btn-primary-hover-border: rgb(31 35 40 / 15%);
-  --color-btn-primary-selected-bg: hsl(137deg 66% 28% / 100%);
-  --color-btn-primary-selected-shadow: inset 0 1px 0 rgb(0 45 17 / 20%);
+  --color-btn-primary-hover-bg: var(--c-accent);
+  --color-btn-primary-hover-border: var(--c-accent);
+  --color-btn-primary-selected-bg: var(--c-accent);
+  --color-btn-primary-selected-shadow: inset 0 1px 0 rgb(0 0 0 / 0%);
   --color-btn-primary-disabled-text: rgb(255 255 255 / 80%);
-  --color-btn-primary-disabled-bg: #94d3a2;
-  --color-btn-primary-disabled-border: rgb(31 35 40 / 15%);
-  --color-action-list-item-default-hover-bg: rgb(208 215 222 / 32%);
-  --color-segmented-control-bg: #eaeef2;
-  --color-segmented-control-button-bg: #fff;
-  --color-segmented-control-button-selected-border: #8c959f;
+  --color-btn-primary-disabled-bg: #bcd3ff; /* 포인트 톤 다운 */
+  --color-btn-primary-disabled-border: var(--c-border);
+
+  /* 리스트/세그먼트 토글 */
+  --color-action-list-item-default-hover-bg: rgb(208 215 222 / 24%);
+  --color-segmented-control-bg: var(--c-soft-2);
+  --color-segmented-control-button-bg: var(--c-white);
+  --color-segmented-control-button-selected-border: var(--c-border-strong);
+
+  /* 본문/캔버스/경계 */
   --color-fg-default: #1F2328;
-  --color-fg-muted: #656d76;
+  --color-fg-muted: var(--c-muted);
   --color-fg-subtle: #6e7781;
-  --color-canvas-default: #fff;
-  --color-canvas-overlay: #fff;
-  --color-canvas-inset: #f6f8fa;
-  --color-canvas-subtle: #f6f8fa;
-  --color-border-default: #d0d7de;
-  --color-border-muted: hsl(210deg 18% 87% / 100%);
+  --color-canvas-default: var(--c-white);
+  --color-canvas-overlay: var(--c-white);
+  --color-canvas-inset: var(--c-soft-2);
+  --color-canvas-subtle: var(--c-soft-2);
+  --color-border-default: var(--c-border);
+  --color-border-muted: var(--c-border);
   --color-neutral-muted: rgb(175 184 193 / 20%);
-  --color-accent-fg: #0969da;
-  --color-accent-emphasis: #0969da;
-  --color-accent-muted: rgb(84 174 255 / 40%);
-  --color-accent-subtle: #ddf4ff;
+
+  /* 강조/포커스 계열은 전부 사이트 포인트로 통일 */
+  --color-accent-fg: var(--c-accent);
+  --color-accent-emphasis: var(--c-accent);
+  --color-accent-muted: color-mix(in srgb, var(--c-accent) 40%, #fff);
+  --color-accent-subtle: color-mix(in srgb, var(--c-accent) 12%, #fff);
+
+  /* 상태색(성공/경고/위험)은 GitHub 기본 톤 유지 */
   --color-success-fg: #1a7f37;
   --color-attention-fg: #9a6700;
   --color-attention-muted: rgb(212 167 44 / 40%);
@@ -76,19 +107,21 @@ main {
   --color-danger-fg: #d1242f;
   --color-danger-muted: rgb(255 129 130 / 40%);
   --color-danger-subtle: #ffebe9;
+
+  /* 내부 그림자/스케일 컬러 */
   --color-primer-shadow-inset: inset 0 1px 0 rgb(208 215 222 / 20%);
-  --color-scale-gray-1: #eaeef2;
-  --color-scale-blue-1: #b6e3ff;
+  --color-scale-gray-1: var(--c-soft-2);
+  --color-scale-blue-1: color-mix(in srgb, var(--c-accent) 18%, #fff);
 
   /*! Extensions from @primer/css/alerts/flash.scss */
-  --color-social-reaction-bg-hover: var(--color-scale-gray-1);
-  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
+  --color-social-reaction-bg-hover: var(--c-soft-2);                    /* 이모지 호버 */
+  --color-social-reaction-bg-reacted-hover: color-mix(in srgb, var(--c-accent) 18%, #fff);
 }
 
+/* giscus가 참조하는 로더 이미지는 그대로 유지 */
 main .pagination-loader-container {
   background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line.svg");
 }
-
 main .gsc-loading-image {
   background-image: url("https://github.githubassets.com/images/mona-loading-default.gif");
 }
