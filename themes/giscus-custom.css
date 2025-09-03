@@ -393,3 +393,72 @@
   background: #e0e0e0 !important;
   border: 1px solid #dbdbdb !important;
 }
+
+/* 이모지/반응 버튼: 테두리·배경 제거(선택됨 포함) */
+.gsc-reactions button,
+.gsc-reactions .btn,
+.gsc-reactions .BtnGroup-item,
+.gsc-reactions .gsc-reaction-button,
+.gsc-reactions .gsc-reaction-button[aria-pressed="true"]{
+  border: none !important;
+  background: #FFF0 !important;  /* 완전 투명 */
+  box-shadow: none !important;
+}
+
+/* 정렬 토글(오래된 순/새로운 순) 스타일 */
+.gsc-order button{
+  border-radius: 9999px !important;          /* 양끝 반원 */
+  border: 1px solid #eaeaea !important;      /* 비활성 테두리 */
+  background: #fff !important;
+  color: #000 !important;
+  box-shadow: none !important;
+}
+.gsc-order button[aria-pressed="true"]{
+  background: #000 !important;               /* 활성: 검정 배경, 흰 텍스트, 테두리 제거 */
+  color: #fff !important;
+  border-color: #0000 !important;
+}
+.gsc-order button:hover{
+  background: var(--c-accent, #2AC1BC) !important; /* 호버 공통 */
+  color: #fff !important;
+  border-color: #0000 !important;
+}
+
+/* 답글 입력창(텍스트영역) 포커스: 진한 외곽선/하이라이트 제거 */
+.gsc-comment-box textarea{
+  outline: none !important;
+  box-shadow: none !important;               /* 파란/진한 포커스 제거 */
+  border: 1px solid #e0e0e0 !important;      /* 항상 연회색 */
+  background: #fff !important;
+  border-radius: 28px !important;            /* 기존 둥근 모양 유지 */
+}
+.gsc-reply, .gsc-comment-box, .gsc-reply-box,
+.gsc-reply:focus-within, .gsc-comment-box:focus-within, .gsc-reply-box:focus-within{
+  box-shadow: none !important;               /* 바깥쪽 하이라이트(청록 링) 제거 */
+  border-color: #d9d9d9 !important;          /* 포커스 시도 그레이 유지(살짝 진함) */
+}
+
+/* 답글 입력창 아래쪽 “마크다운 도움/아이콘” 숨김 */
+.gsc-comment-box [title*="Markdown"],
+.gsc-comment-box [aria-label*="Markdown"],
+.gsc-comment-box [title*="마크다운"],
+.gsc-comment-box .markdown-hint,
+.gsc-comment-box .tooltipped{
+  display: none !important;
+}
+
+/* 코드블록 배경 더 진하게(라이트 모드 기준) */
+.gsc-comment .markdown-body pre,
+.gsc-comment .markdown-body code:not(pre code){
+  background: #d5d5d5 !important;            /* #eaeaea 보다 진한 회색 */
+  border-color: #d5d5d5 !important;
+}
+/* 다크 모드 대비(선택) */
+@media (prefers-color-scheme: dark){
+  .gsc-comment .markdown-body pre,
+  .gsc-comment .markdown-body code:not(pre code){
+    background: #292c33 !important;          /* 요청하신 색 */
+    border-color: #292c33 !important;
+  }
+}
+
