@@ -1,129 +1,126 @@
-/* ==================== 기본 설정 ==================== */
-/* 티스토리 톤과 맞춘 기본 색 변수 */
+/* =========================================================
+   0) 공통 색 변수 (티스토리 톤)
+   ========================================================= */
 :root{
-  --c-accent: #2AC1BC; /* 포인트 */
-  --c-black: #000;
-  --c-white: #FFF;
-  --c-border: #eaeaea; /* 매우 연한 경계선 */
-  --c-muted: #666;
-  --c-soft: #ededed;   /* 소프트 배경 */
-  --c-soft-2: #f6f6f6; /* 더 연한 소프트 배경 */
-  --c-divider: var(--c-border);
+  --c-accent: #2AC1BC;     /* 포인트 */
+  --c-black:  #000;
+  --c-white:  #FFF;
+  --c-border: #eaeaea;     /* 연한 경계 */
+  --c-border-strong:#d1d5db;/* 포커스 시 조금 진한 회색 */
+  --c-muted:  #666;
+  --c-soft:   #ededed;     /* 소프트 배경(코드·하이라이트) */
+  --c-soft-2: #f6f6f6;     /* 더 연한 소프트 배경 */
 }
 
-/* giscus(Primer) 색 토큰으로 매핑 */
+/* Primer 토큰 중 테두리·배경 계열만 완화 (전체 톤을 흰/연회색으로 맞춤) */
 :root{
-  /* 본문/텍스트 */
   --color-fg-default: #000;
   --color-fg-muted: var(--c-muted);
   --color-canvas-default: var(--c-white);
-  --color-canvas-subtle: var(--c-white);
-
-  /* 링크/포인트 */
-  --color-accent-fg: var(--c-accent);
-  --color-accent-emphasis: var(--c-accent);
-
-  /* 테두리 농도 완화 */
+  --color-canvas-subtle:  var(--c-white);
   --color-border-default: var(--c-border);
-  --color-border-muted: var(--c-border);
+  --color-border-muted:   var(--c-border);
 
-  /* 일반 버튼(흰 배경) */
-  --color-btn-text: #000;
-  --color-btn-bg: var(--c-white);
+  /* 기본 버튼(흰 바탕) */
+  --color-btn-text:   #000;
+  --color-btn-bg:     var(--c-white);
   --color-btn-border: transparent;
   --color-btn-hover-bg: var(--c-white);
   --color-btn-hover-border: transparent;
   --color-btn-hover-shadow: none;
   --color-btn-inset-shadow: none;
   --color-btn-active-bg: var(--c-white);
-  --color-btn-active-border: transparent;
 
   /* 주요 버튼(검정 → 호버 시 포인트) */
-  --color-btn-primary-text: #FFF;
-  --color-btn-primary-bg: var(--c-black);
+  --color-btn-primary-text:   #FFF;
+  --color-btn-primary-bg:     var(--c-black);
   --color-btn-primary-border: transparent;
   --color-btn-primary-hover-bg: var(--c-accent);
   --color-btn-primary-active-bg: var(--c-accent);
 }
 
-/* ==================== 레이아웃 정리 ==================== */
-/* 댓글 카드: 테두리/그림자 제거, 하단 구분선만 표시 */
-.gsc-comment{
-  background: transparent !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  padding: 16px 0 !important;
-  border-bottom: 1px solid var(--c-divider) !important;
-}
-.gsc-comment:last-of-type{ border-bottom: 0 !important; }
-
-/* 작성 영역: 카드 느낌 제거, 하단 구분선 유지 */
+/* =========================================================
+   1) 카드/레이아웃 : 테두리·그림자 제거 + 불필요한 구분선 제거
+   ========================================================= */
+.gsc-comment,
+.gsc-comment > .gsc-comment-content,
+.gsc-comment .gsc-replies,
+.gsc-comment-footer,
 .gsc-comment-box{
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
-  padding: 12px 0 !important;
-  border-bottom: 1px solid var(--c-divider) !important;
 }
 
-/* 본문/답글 컨테이너의 불필요한 경계 제거 */
-.gsc-comment > .gsc-comment-content,
+/* 댓글 카드 하단선 없음 + 댓글 사이 중앙선 방지 */
+.gsc-comment{ border-bottom: 0 !important; }
+.gsc-comment + .gsc-comment{ border-top: 0 !important; }
+
+/* 작성 영역은 리스트와의 경계만 약하게 유지하고 싶을 때(선택 사용) */
+/* .gsc-comment-box{ border-bottom: 1px solid var(--c-border) !important; } */
+
+/* 답글 바깥 흰 배경 상자 : 윗변은 직선, 아래만 둥글게 */
+.gsc-reply-box,
 .gsc-comment .gsc-replies{
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-/* ==================== 정렬 토글 ==================== */
-/* ‘오래된 순 / 새로운 순’ : 필 형태, 비활성은 연한 회색 글자 */
-.gsc-order button,
-.gsc-header .BtnGroup-item,
-.gsc-header .btn{
-  border-radius: 9999px !important;
-  border: 0 !important;
   background: var(--c-white) !important;
-  color: #888 !important;
-  box-shadow: none !important;
-  font-weight: 500 !important;
-}
-/* 활성: 검정 배경, 흰 글자, 외곽선 없음 */
-.gsc-order button[aria-pressed="true"],
-.gsc-header .BtnGroup-item.selected{
-  background: var(--c-black) !important;
-  color: #fff !important;
   border: 0 !important;
   box-shadow: none !important;
+  border-radius: 0 0 20px 20px !important;
 }
 
-/* ==================== 반응(이모지) ==================== */
-/* 추가/칩: 외곽선 제거, 흰 배경 유지 */
-.gsc-reactions button,
+/* =========================================================
+   2) 정렬 토글(오래된 순 / 새로운 순) : 필 모양, 상태별 색상
+   ========================================================= */
+.gsc-header .gsc-order button,
+.gsc-header .gsc-order .BtnGroup-item{
+  border-radius: 9999px !important;            /* 양끝 반원 */
+  border: 1px solid var(--c-border) !important;/* 비활성 테두리 */
+  background: var(--c-white) !important;       /* 비활성 배경 */
+  color: #000 !important;                      /* 비활성 텍스트 */
+  box-shadow: none !important;
+}
+.gsc-header .gsc-order button[aria-pressed="true"],
+.gsc-header .gsc-order .BtnGroup-item[aria-selected="true"]{
+  background: var(--c-black) !important;       /* 활성: 검정 배경 */
+  color: #fff !important;                      /* 활성: 흰 텍스트 */
+  border-color: transparent !important;
+}
+.gsc-header .gsc-order button:hover,
+.gsc-header .gsc-order .BtnGroup-item:hover{
+  background: var(--c-accent) !important;      /* 호버: 포인트 */
+  color: #fff !important;
+  border-color: transparent !important;
+}
+
+/* =========================================================
+   3) 반응(이모지) : 외곽선/배경/그림자 제거(선택됨 포함)
+   ========================================================= */
 .gsc-reactions .btn,
-.gsc-social-reaction-summary .btn{
+.gsc-reactions .Button,
+.gsc-reaction-summary .btn,
+.gsc-reaction-summary .Button,
+.gsc-reactions .gsc-reaction-button,
+.gsc-reactions .gsc-reaction-button[aria-pressed="true"]{
   border: 0 !important;
   box-shadow: none !important;
-  background: var(--c-white) !important;
-}
-/* 상단 ‘반응’ 영역 최소화(가능 범위) */
-.gsc-header .gsc-reactions,
-.gsc-header [aria-label="Reactions"],
-.gsc-header [data-reactions]{
-  display: none !important;
+  background: #FFF0 !important;               /* 완전 투명 */
 }
 
-/* ==================== 소유자 배지 ==================== */
-/* 라벨: 포인트 배경, 흰 글자, 외곽선 제거 */
+/* 상단 헤더의 “반응” 집계줄은 숨김(필요 시 사용) */
+/* .gsc-header [data-reactions]{ display:none !important; } */
+
+/* =========================================================
+   4) 배지/버튼 : 소유자 배지, 로그인/등록/취소 버튼
+   ========================================================= */
 .Label, .IssueLabel, .gsc-comment .Label{
-  background: var(--c-accent) !important;
+  background: var(--c-accent) !important;      /* 소유자 배지 */
   color: #fff !important;
   border: 0 !important;
 }
 
-/* ==================== 주요 버튼 ==================== */
-/* 로그인/등록: 필 형태, 검정 배경 → 호버 시 포인트 */
 .gsc-login-button .btn-primary,
 .gsc-comment-box .btn-primary{
-  border-radius: 9999px !important;
+  border-radius: 9999px !important;            /* 로그인/등록 */
   background: var(--c-black) !important;
   color: #fff !important;
   border: 0 !important;
@@ -131,10 +128,10 @@
 }
 .gsc-login-button .btn-primary:hover,
 .gsc-comment-box .btn-primary:hover{
-  background: var(--c-accent) !important;
+  background: var(--c-accent) !important;      /* 호버: 포인트 */
 }
 
-/* 취소: 흰 배경, 얇은 테두리 → 호버 시 포인트 배경 */
+/* 취소 버튼 : 얇은 테두리 → 호버 시 포인트 배경 */
 .gsc-comment-box .btn:not(.btn-primary){
   border-radius: 9999px !important;
   background: var(--c-white) !important;
@@ -148,28 +145,46 @@
   border-color: transparent !important;
 }
 
-/* 로그인 버튼 라벨 단축(선택 사항) */
-.gsc-login-button .btn-primary > span{
-  font-size: 0 !important;
-}
+/* 로그인 버튼 라벨을 “로그인”으로 축약 */
+.gsc-login-button .btn-primary > span{ font-size:0 !important; }
 .gsc-login-button .btn-primary > span::after{
-  content: "로그인";
-  font-size: 14px;
-  line-height: 1;
-  margin-left: 6px;
+  content: "로그인"; font-size:14px; line-height:1; margin-left:6px;
 }
 
-/* ==================== 입력/탭 ==================== */
-/* 텍스트 영역: 연한 테두리, 필 형태 */
-.gsc-comment-box textarea{
+/* =========================================================
+   5) 입력영역/포커스 : 필 모양 통일 + 포커스 링 제거
+   ========================================================= */
+/* 텍스트영역(댓글/답글) 기본 모양 */
+.gsc-comment-box textarea,
+.gsc-replies textarea,
+.gsc-reply-box textarea,
+.giscus textarea{
   background: var(--c-white) !important;
   border: 1px solid var(--c-border) !important;
-  border-radius: 9999px !important;
+  border-radius: 24px !important;              /* 동일한 둥근 사각형 */
   padding: 12px 16px !important;
   outline: 0 !important;
   box-shadow: none !important;
 }
-/* 작성/미리보기 탭: 외곽선 제거 */
+
+/* 포커스 시에도 진한 테두리·청록 하이라이트가 생기지 않게 고정 */
+.gsc-comment-box textarea:focus,
+.gsc-replies textarea:focus,
+.gsc-reply-box textarea:focus,
+.giscus :is(textarea, .gsc-reply, .gsc-comment-box):is(:focus, :focus-visible, :focus-within){
+  border-color: var(--c-border-strong) !important; /* 약간만 진하게 */
+  box-shadow: none !important;                     /* 하이라이트 제거 */
+  outline: 0 !important;
+}
+
+/* 포커스가 들어올 때 래퍼에 생기는 추가 보더/그림자 제거 */
+.giscus :is(.gsc-reply, .gsc-replies .gsc-reply, .gsc-comment-box){
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 탭(작성하기/미리보기) 외곽선 제거 */
 .gsc-comment-box .tabnav,
 .gsc-comment-box .tabnav-tab{
   background: var(--c-white) !important;
@@ -177,268 +192,7 @@
   box-shadow: none !important;
 }
 
-/* ==================== 마크다운 ==================== */
-/* 제목 하단선 더 연하게 */
-.markdown-body h1,
-.markdown-body h2{
-  border-bottom: 1px solid var(--c-border) !important;
-}
-/* 구분선 색/두께 완화 */
-.markdown-body hr{
-  background-color: var(--c-border) !important;
-  border: 0 !important;
-  height: 1px !important;
-}
-/* 인용: 연한 배경 + 연한 좌측 바 */
-.markdown-body blockquote{
-  border-left: 4px solid var(--c-border) !important;
-  background: var(--c-soft-2) !important;
-}
-/* 코드 블록: 소프트 배경 */
-.markdown-body pre{
-  background: var(--c-soft) !important;
-  border: 1px solid #efefef !important;
-  border-radius: 8px !important;
-  padding: 12px !important;
-  overflow: auto !important;
-}
-/* 인라인 코드/강조 배경 통일 */
-.markdown-body code,
-.markdown-body tt,
-.markdown-body kbd,
-.markdown-body mark{
-  background: var(--c-soft) !important;
-  border: 1px solid #efefef !important;
-  border-radius: 4px !important;
-  padding: 0.1em 0.35em !important;
-}
-/* 코드 복사 버튼: 플랫 스타일 */
-.markdown-body .clipboard-btn,
-.markdown-body .btn-octicon{
-  border: 0 !important;
-  box-shadow: none !important;
-  background: var(--c-white) !important;
-}
-
-/* ==================== 답글/푸터 ==================== */
-/* 답글 박스: 연한 테두리, 둥근 모서리 */
-.gsc-comment .gsc-reply-box,
-.gsc-reply-box .gsc-reply{
-  border-color: var(--c-border) !important;
-  border-radius: 16px !important;
-}
-/* 푸터 경계 제거 */
-.gsc-comment-footer{
-  border: 0 !important;
-}
-
-/* ===================== 패치 v2: 요청 반영 ===================== */
-
-/* 0) 공통 색 변수 */
-:root{
-  --c-accent: #2AC1BC;   /* 메인 포인트 */
-  --c-border: #eaeaea;   /* 연한 테두리 */
-}
-
-/* 1) 정렬 토글(오래된 순 / 새로운 순)
-   - 기본: 흰 배경 / 검정 텍스트 / 연회색 아웃라인
-   - 선택: 검정 배경 / 흰 텍스트 / 아웃라인 제거
-   - 호버: 포인트 배경 / 흰 텍스트 / 아웃라인 제거  */
-.gsc-header .gsc-order button,
-.gsc-header .gsc-sort  button{
-  border-radius: 9999px !important;
-  background: #fff !important;
-  color: #000 !important;
-  border: 1px solid var(--c-border) !important;
-  box-shadow: none !important;
-}
-.gsc-header .gsc-order button[aria-pressed="true"],
-.gsc-header .gsc-sort  button[aria-pressed="true"],
-.gsc-header .gsc-order .selected,
-.gsc-header .gsc-sort  .selected{
-  background: #000 !important;
-  color: #fff !important;
-  border-color: #000 !important;
-}
-.gsc-header .gsc-order button:hover,
-.gsc-header .gsc-sort  button:hover{
-  background: var(--c-accent) !important;
-  color: #fff !important;
-  border-color: var(--c-accent) !important;
-}
-
-/* 2) 반응(🙂 추가)과 이모지 버튼: 외곽선/아웃라인 제거, 흰 배경 유지 */
-.gsc-reactions button,
-.gsc-reactions .btn{
-  border: 0 !important;
-  box-shadow: none !important;
-  background: #fff !important;
-}
-
-/* 3) 댓글 카드/블록: 외곽선과 구분선 제거(블록 사이에 선 생기지 않도록) */
-.gsc-comment{
-  border: 0 !important;
-  box-shadow: none !important;
-  border-bottom: 0 !important;
-}
-.gsc-comment + .gsc-comment{
-  border-top: 0 !important;
-}
-
-/* 4) 답글 작성 입력창: 이전 ‘필 형태’ 수정 철회 → 기본형(둥근 사각형)으로 복귀 */
-.gsc-comment-box textarea,
-.gsc-replies      textarea,
-.gsc-reply-box    textarea{
-  background: #fff !important;
-  border: 1px solid var(--c-border) !important;
-  border-radius: 12px !important;  /* 기본 둥근 사각형 */
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* 5) 코드 블록(마크다운): 어두운 배경으로 통일 */
-.gsc-comment .markdown-body pre,
-.gsc-comment .markdown-body code{
-  background: #292C33 !important;
-  color: #f6f8fa !important;
-  border: 0 !important;
-}
-.gsc-comment .markdown-body pre code{
-  background: transparent !important; /* 중복 배경 방지 */
-  color: inherit !important;
-}
-
-/* 6) 불필요한 ‘가운데 선’ 유발 소지 제거(컨테이너 보더 리셋) */
-.gsc-comment-box,
-.gsc-header{
-  border: 0 !important;
-  box-shadow: none !important;
-}
-/* ===== PATCH: 정렬 토글/반응 버튼/답글 필드/코드 블록 ===== */
-
-/* 반응(스마일·이모지) 버튼 외곽선 제거 */
-.gsc-reactions .btn,
-.gsc-reactions .Button,
-.gsc-reaction-summary .btn,
-.gsc-reaction-summary .Button,
-.gsc-reactions .gsc-reaction-button{
-  border: none !important;
-  box-shadow: none !important;
-  background: #fff !important;
-}
-
-/* 정렬 토글(오래된 순 / 새로운 순) 기본 모양 */
-.gsc-header .gsc-order button,
-.gsc-header .gsc-order .BtnGroup-item{
-  border-radius: 9999px !important;           /* 양끝 반원 */
-  border: 1px solid #eaeaea !important;       /* 비활성 테두리 */
-  background: #fff !important;                /* 비활성 배경 */
-  color: #000 !important;                     /* 비활성 텍스트 */
-}
-
-/* 정렬 토글: 활성(선택됨) — 검정 배경, 흰 글자, 테두리 제거 */
-.gsc-header .gsc-order button[aria-pressed="true"],
-.gsc-header .gsc-order .BtnGroup-item[aria-selected="true"]{
-  background: #000 !important;
-  color: #fff !important;
-  border-color: transparent !important;
-}
-
-/* 정렬 토글: 호버 — 메인컬러 배경, 흰 글자, 테두리 제거 */
-.gsc-header .gsc-order button:hover,
-.gsc-header .gsc-order .BtnGroup-item:hover{
-  background: var(--c-accent, #2AC1BC) !important;
-  color: #fff !important;
-  border-color: transparent !important;
-}
-
-/* 답글 입력 필드(비활성/활성 공통) 크기·모양 통일 */
-.gsc-reply-box textarea,
-.gsc-comment-box textarea{
-  border: 1px solid #eaeaea !important;
-  border-radius: 24px !important;             /* 기존 둥근 사각형 유지 */
-}
-
-/* 답글 입력 필드: 포커스 시 회색 하이라이트(메인컬러 제거) */
-.gsc-reply-box textarea:focus,
-.gsc-comment-box textarea:focus{
-  border-color: #d5d5d5 !important;           /* #eaeaea 보다 조금 진한 회색 */
-  box-shadow: 0 0 0 2px #d5d5d5 !important;
-  outline: none !important;
-}
-
-/* 답글 영역 바깥 흰 배경 상자: 상단 직선, 외곽선 제거 */
-.gsc-reply-box,
-.gsc-comment .gsc-replies{
-  background: #fff !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  border-radius: 0 0 20px 20px !important;     /* 위쪽은 직선, 아래만 둥글게 */
-}
-
-/* 댓글·답글 사이 불필요한 중앙선 제거 */
-.gsc-replies::before,
-.gsc-replies::after,
-.gsc-comment::after{
-  display: none !important;
-}
-
-/* 코드 블록 배경: #eaeaea 보다 진한 회색으로統一 */
-.markdown-body pre,
-.markdown-body pre code{
-  background: #e0e0e0 !important;
-  border: 1px solid #dbdbdb !important;
-}
-.markdown-body code:not(pre > code){
-  background: #e0e0e0 !important;
-  border: 1px solid #dbdbdb !important;
-}
-
-/* 이모지/반응 버튼: 테두리·배경 제거(선택됨 포함) */
-.gsc-reactions button,
-.gsc-reactions .btn,
-.gsc-reactions .BtnGroup-item,
-.gsc-reactions .gsc-reaction-button,
-.gsc-reactions .gsc-reaction-button[aria-pressed="true"]{
-  border: none !important;
-  background: #FFF0 !important;  /* 완전 투명 */
-  box-shadow: none !important;
-}
-
-/* 정렬 토글(오래된 순/새로운 순) 스타일 */
-.gsc-order button{
-  border-radius: 9999px !important;          /* 양끝 반원 */
-  border: 1px solid #eaeaea !important;      /* 비활성 테두리 */
-  background: #fff !important;
-  color: #000 !important;
-  box-shadow: none !important;
-}
-.gsc-order button[aria-pressed="true"]{
-  background: #000 !important;               /* 활성: 검정 배경, 흰 텍스트, 테두리 제거 */
-  color: #fff !important;
-  border-color: #0000 !important;
-}
-.gsc-order button:hover{
-  background: var(--c-accent, #2AC1BC) !important; /* 호버 공통 */
-  color: #fff !important;
-  border-color: #0000 !important;
-}
-
-/* 답글 입력창(텍스트영역) 포커스: 진한 외곽선/하이라이트 제거 */
-.gsc-comment-box textarea{
-  outline: none !important;
-  box-shadow: none !important;               /* 파란/진한 포커스 제거 */
-  border: 1px solid #e0e0e0 !important;      /* 항상 연회색 */
-  background: #fff !important;
-  border-radius: 28px !important;            /* 기존 둥근 모양 유지 */
-}
-.gsc-reply, .gsc-comment-box, .gsc-reply-box,
-.gsc-reply:focus-within, .gsc-comment-box:focus-within, .gsc-reply-box:focus-within{
-  box-shadow: none !important;               /* 바깥쪽 하이라이트(청록 링) 제거 */
-  border-color: #d9d9d9 !important;          /* 포커스 시도 그레이 유지(살짝 진함) */
-}
-
-/* 답글 입력창 아래쪽 “마크다운 도움/아이콘” 숨김 */
+/* 마크다운 도움/힌트 바 숨김 */
 .gsc-comment-box [title*="Markdown"],
 .gsc-comment-box [aria-label*="Markdown"],
 .gsc-comment-box [title*="마크다운"],
@@ -447,58 +201,47 @@
   display: none !important;
 }
 
-/* 코드블록 배경 더 진하게(라이트 모드 기준) */
-.gsc-comment .markdown-body pre,
-.gsc-comment .markdown-body code:not(pre code){
-  background: #d5d5d5 !important;            /* #eaeaea 보다 진한 회색 */
-  border-color: #d5d5d5 !important;
+/* =========================================================
+   6) 마크다운 렌더링 : 제목/구분선/인용/코드 스타일
+   ========================================================= */
+.markdown-body h1,
+.markdown-body h2{                                 /* 제목 하단선 완화 */
+  border-bottom: 1px solid var(--c-border) !important;
 }
-/* 다크 모드 대비(선택) */
-@media (prefers-color-scheme: dark){
-  .gsc-comment .markdown-body pre,
-  .gsc-comment .markdown-body code:not(pre code){
-    background: #292c33 !important;          /* 요청하신 색 */
-    border-color: #292c33 !important;
-  }
+.markdown-body hr{                                  /* 구분선 연하게 */
+  background-color: var(--c-border) !important;
+  border: 0 !important;
+  height: 1px !important;
 }
-
-/* =============== Reply box 모양/포커스 완전 고정 =============== */
-.giscus {
-  --wy-border: #e5e7eb;          /* 평상시 테두리 */
-  --wy-border-strong: #d1d5db;   /* 포커스 시 테두리(진회색) */
-  --wy-radius-pill: 28px;        /* 라이트/다크 동일 반지름 */
+.markdown-body blockquote{                           /* 인용 배경·바 */
+  border-left: 4px solid var(--c-border) !important;
+  background: var(--c-soft-2) !important;
 }
 
-/* 바깥 래퍼(포커스 들어오면 생기는 큰 박스) → 모양/강조 제거 */
-.giscus :is(.gsc-comment-box, .gsc-reply, .gsc-replies .gsc-reply) {
-  background: transparent !important;
+/* 코드블록은 어두운 판넬, 인라인 코드는 소프트 회색 */
+.markdown-body pre{
+  background: #292C33 !important;
+  color: #f6f8fa !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  overflow: auto !important;
+}
+.markdown-body pre code{ background: transparent !important; color: inherit !important; }
+.markdown-body code:not(pre > code),
+.markdown-body tt,
+.markdown-body kbd,
+.markdown-body mark{
+  background: var(--c-soft) !important;
+  border: 1px solid #efefef !important;
+  border-radius: 4px !important;
+  padding: 0.1em 0.35em !important;
+}
+
+/* 코드 블록의 '복사' 버튼은 플랫화 */
+.markdown-body .clipboard-btn,
+.markdown-body .btn-octicon{
   border: 0 !important;
   box-shadow: none !important;
-}
-
-/* 텍스트영역 자체만 일관된 모양으로 고정 */
-.giscus textarea {
-  background: transparent !important;
-  border: 1px solid var(--wy-border) !important;
-  border-radius: var(--wy-radius-pill) !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-}
-
-/* 포커스 들어와도 색/그림자 진해지지 않게 고정 */
-.giscus :is(textarea, .gsc-comment-box, .gsc-reply):is(:focus, :focus-visible, :focus-within) {
-  outline: 0 !important;
-  box-shadow: none !important;
-  border-color: var(--wy-border-strong) !important;   /* 조금 진한 회색 */
-}
-
-/* 포커스 시 입력창 아래쪽에 깔리는 추가 하이라이트/보더 제거 */
-.giscus .gsc-reply + * {
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-/* “Aa/마크다운 도움” 같은 보조 힌트 바가 있다면 숨김 */
-.giscus :is(.gsc-help, .gsc-comment-box-markdown-hint) {
-  display: none !important;
+  background: var(--c-white) !important;
 }
