@@ -100,6 +100,12 @@ main {
   --color-accent-muted: color-mix(in srgb, var(--c-accent) 40%, #fff);
   --color-accent-subtle: color-mix(in srgb, var(--c-accent) 12%, #fff);
 
+   /* 강조/뱃지 */
+  --bgColor-accent-emphasis: var(--c-accent); 
+  --bgColor-accent-muted: color-mix(in srgb, var(--c-accent) 12%, #fff); 
+  --borderColor-accent-muted: color-mix(in srgb, var(--c-accent) 35%, #fff); 
+  --fgColor-onEmphasis: var(--c-white);
+   
   /* 상태색(성공/경고/위험) */
   --color-success-fg: #1a7f37;
   --color-attention-fg: #9a6700;
