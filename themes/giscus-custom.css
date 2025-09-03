@@ -127,3 +127,6 @@ main .gsc-loading-image {
   background-image: url("https://github.githubassets.com/images/mona-loading-default.gif");
 }
 
+.giscus .markdown-body :is(h1,h2){
+   border-bottom: 0 !important; box-shadow: none !important; padding-bottom: 0 !important; 
+}
