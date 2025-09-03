@@ -1,76 +1,233 @@
-/* 구분선 색 (티스토리 느낌의 아주 연한 회색) */
+/* ==================== 기본 설정 ==================== */
+/* 티스토리 톤과 맞춘 기본 색 변수 */
 :root{
-  --g-divider: var(--g-border, #eaeaea);
+  --c-accent: #2AC1BC; /* 포인트 */
+  --c-black: #000;
+  --c-white: #FFF;
+  --c-border: #eaeaea; /* 매우 연한 경계선 */
+  --c-muted: #666;
+  --c-soft: #ededed;   /* 소프트 배경 */
+  --c-soft-2: #f6f6f6; /* 더 연한 소프트 배경 */
+  --c-divider: var(--c-border);
 }
 
-/* 1) 각 댓글 "카드" 테두리/그림자 제거 + 하단만 구분선 */
+/* giscus(Primer) 색 토큰으로 매핑 */
+:root{
+  /* 본문/텍스트 */
+  --color-fg-default: #000;
+  --color-fg-muted: var(--c-muted);
+  --color-canvas-default: var(--c-white);
+  --color-canvas-subtle: var(--c-white);
+
+  /* 링크/포인트 */
+  --color-accent-fg: var(--c-accent);
+  --color-accent-emphasis: var(--c-accent);
+
+  /* 테두리 농도 완화 */
+  --color-border-default: var(--c-border);
+  --color-border-muted: var(--c-border);
+
+  /* 일반 버튼(흰 배경) */
+  --color-btn-text: #000;
+  --color-btn-bg: var(--c-white);
+  --color-btn-border: transparent;
+  --color-btn-hover-bg: var(--c-white);
+  --color-btn-hover-border: transparent;
+  --color-btn-hover-shadow: none;
+  --color-btn-inset-shadow: none;
+  --color-btn-active-bg: var(--c-white);
+  --color-btn-active-border: transparent;
+
+  /* 주요 버튼(검정 → 호버 시 포인트) */
+  --color-btn-primary-text: #FFF;
+  --color-btn-primary-bg: var(--c-black);
+  --color-btn-primary-border: transparent;
+  --color-btn-primary-hover-bg: var(--c-accent);
+  --color-btn-primary-active-bg: var(--c-accent);
+}
+
+/* ==================== 레이아웃 정리 ==================== */
+/* 댓글 카드: 테두리/그림자 제거, 하단 구분선만 표시 */
 .gsc-comment{
   background: transparent !important;
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  padding: 16px 0 !important;                  /* 위/아래 여백만 */
-  border-bottom: 1px solid var(--g-divider) !important;  /* 하단 중단선 */
+  padding: 16px 0 !important;
+  border-bottom: 1px solid var(--c-divider) !important;
 }
-.gsc-comment:last-of-type{
-  border-bottom: 0 !important;                 /* 마지막 댓글은 선 제거 */
-}
+.gsc-comment:last-of-type{ border-bottom: 0 !important; }
 
-/* 2) 댓글 내부의 “보조 블록”은 연한 회색 배경으로 */
-.gsc-comment .markdown-body blockquote{
-  background: #fafafa !important;
-  border-left: 4px solid var(--g-border, #eaeaea) !important;
-  margin: 8px 0 !important;
-  padding: 10px 12px !important;
-}
-.gsc-comment .markdown-body pre{
-  background: #fafafa !important;
-  border: 1px solid var(--g-border, #eaeaea) !important;
-  border-radius: 6px !important;
-  padding: 12px !important;
-  overflow: auto !important;
-}
-.gsc-comment .markdown-body code{
-  background: #f6f6f6 !important;
-  border: 1px solid #efefef !important;
-  border-radius: 4px !important;
-  padding: 0.1em 0.35em !important;
-}
-
-/* 3) 입력 박스(에디터)도 카드 테두리 제거 → 하단선만 */
+/* 작성 영역: 카드 느낌 제거, 하단 구분선 유지 */
 .gsc-comment-box{
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
   padding: 12px 0 !important;
-  border-bottom: 1px solid var(--g-divider) !important;
-}
-.gsc-comment-box:last-of-type{
-  border-bottom: 0 !important;
+  border-bottom: 1px solid var(--c-divider) !important;
 }
 
-/* 4) 텍스트 영역의 점선/테두리 제거 (티스토리처럼 깔끔) */
-.gsc-comment-box textarea{
+/* 본문/답글 컨테이너의 불필요한 경계 제거 */
+.gsc-comment > .gsc-comment-content,
+.gsc-comment .gsc-replies{
   border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ==================== 정렬 토글 ==================== */
+/* ‘오래된 순 / 새로운 순’ : 필 형태, 비활성은 연한 회색 글자 */
+.gsc-order button,
+.gsc-header .BtnGroup-item,
+.gsc-header .btn{
+  border-radius: 9999px !important;
+  border: 0 !important;
+  background: var(--c-white) !important;
+  color: #888 !important;
+  box-shadow: none !important;
+  font-weight: 500 !important;
+}
+/* 활성: 검정 배경, 흰 글자, 외곽선 없음 */
+.gsc-order button[aria-pressed="true"],
+.gsc-header .BtnGroup-item.selected{
+  background: var(--c-black) !important;
+  color: #fff !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ==================== 반응(이모지) ==================== */
+/* 추가/칩: 외곽선 제거, 흰 배경 유지 */
+.gsc-reactions button,
+.gsc-reactions .btn,
+.gsc-social-reaction-summary .btn{
+  border: 0 !important;
+  box-shadow: none !important;
+  background: var(--c-white) !important;
+}
+/* 상단 ‘반응’ 영역 최소화(가능 범위) */
+.gsc-header .gsc-reactions,
+.gsc-header [aria-label="Reactions"],
+.gsc-header [data-reactions]{
+  display: none !important;
+}
+
+/* ==================== 소유자 배지 ==================== */
+/* 라벨: 포인트 배경, 흰 글자, 외곽선 제거 */
+.Label, .IssueLabel, .gsc-comment .Label{
+  background: var(--c-accent) !important;
+  color: #fff !important;
+  border: 0 !important;
+}
+
+/* ==================== 주요 버튼 ==================== */
+/* 로그인/등록: 필 형태, 검정 배경 → 호버 시 포인트 */
+.gsc-login-button .btn-primary,
+.gsc-comment-box .btn-primary{
+  border-radius: 9999px !important;
+  background: var(--c-black) !important;
+  color: #fff !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.gsc-login-button .btn-primary:hover,
+.gsc-comment-box .btn-primary:hover{
+  background: var(--c-accent) !important;
+}
+
+/* 취소: 흰 배경, 얇은 테두리 → 호버 시 포인트 배경 */
+.gsc-comment-box .btn:not(.btn-primary){
+  border-radius: 9999px !important;
+  background: var(--c-white) !important;
+  color: #000 !important;
+  border: 1px solid var(--c-border) !important;
+  box-shadow: none !important;
+}
+.gsc-comment-box .btn:not(.btn-primary):hover{
+  background: var(--c-accent) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+
+/* 로그인 버튼 라벨 단축(선택 사항) */
+.gsc-login-button .btn-primary > span{
+  font-size: 0 !important;
+}
+.gsc-login-button .btn-primary > span::after{
+  content: "로그인";
+  font-size: 14px;
+  line-height: 1;
+  margin-left: 6px;
+}
+
+/* ==================== 입력/탭 ==================== */
+/* 텍스트 영역: 연한 테두리, 필 형태 */
+.gsc-comment-box textarea{
+  background: var(--c-white) !important;
+  border: 1px solid var(--c-border) !important;
+  border-radius: 9999px !important;
+  padding: 12px 16px !important;
   outline: 0 !important;
   box-shadow: none !important;
-  background: transparent !important;
 }
-
-/* 5) 반응 바/메타 정보에도 카드 테두리가 보이면 제거 */
-.gsc-reactions,
-.gsc-header{
-  background: transparent !important;
+/* 작성/미리보기 탭: 외곽선 제거 */
+.gsc-comment-box .tabnav,
+.gsc-comment-box .tabnav-tab{
+  background: var(--c-white) !important;
   border: 0 !important;
   box-shadow: none !important;
 }
 
-/* 6) 답글(스레드) 안쪽 들여쓰기 영역이 카드처럼 보이면 연회색 배경만 */
-.gsc-comment .gsc-comment{
-  background: transparent !important;          /* 카드 제거 */
+/* ==================== 마크다운 ==================== */
+/* 제목 하단선 더 연하게 */
+.markdown-body h1,
+.markdown-body h2{
+  border-bottom: 1px solid var(--c-border) !important;
+}
+/* 구분선 색/두께 완화 */
+.markdown-body hr{
+  background-color: var(--c-border) !important;
+  border: 0 !important;
+  height: 1px !important;
+}
+/* 인용: 연한 배경 + 연한 좌측 바 */
+.markdown-body blockquote{
+  border-left: 4px solid var(--c-border) !important;
+  background: var(--c-soft-2) !important;
+}
+/* 코드 블록: 소프트 배경 */
+.markdown-body pre{
+  background: var(--c-soft) !important;
+  border: 1px solid #efefef !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  overflow: auto !important;
+}
+/* 인라인 코드/강조 배경 통일 */
+.markdown-body code,
+.markdown-body tt,
+.markdown-body kbd,
+.markdown-body mark{
+  background: var(--c-soft) !important;
+  border: 1px solid #efefef !important;
+  border-radius: 4px !important;
+  padding: 0.1em 0.35em !important;
+}
+/* 코드 복사 버튼: 플랫 스타일 */
+.markdown-body .clipboard-btn,
+.markdown-body .btn-octicon{
   border: 0 !important;
   box-shadow: none !important;
+  background: var(--c-white) !important;
 }
-.gsc-comment .gsc-comment .markdown-body{
-  background: #fafafa0f !important;            /* 아주 옅은 회색 느낌(선택사항) */
+
+/* ==================== 답글/푸터 ==================== */
+/* 답글 박스: 연한 테두리, 둥근 모서리 */
+.gsc-comment .gsc-reply-box,
+.gsc-reply-box .gsc-reply{
+  border-color: var(--c-border) !important;
+  border-radius: 16px !important;
+}
+/* 푸터 경계 제거 */
+.gsc-comment-footer{
+  border: 0 !important;
 }
