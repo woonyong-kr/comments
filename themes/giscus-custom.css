@@ -32,16 +32,16 @@
 
   --color-btn-text:   #000;
   --color-btn-bg:     var(--c-white);
-  --color-btn-border: transparent;
+  --color-btn-border: var(--c-white);
   --color-btn-hover-bg: var(--c-white);
-  --color-btn-hover-border: transparent;
+  --color-btn-hover-border: var(--c-white);
   --color-btn-hover-shadow: none;
   --color-btn-inset-shadow: none;
   --color-btn-active-bg: var(--c-white);
 
   --color-btn-primary-text:   #FFF;
   --color-btn-primary-bg:     #000;
-  --color-btn-primary-border: transparent;
+  --color-btn-primary-border: var(--c-white);
   --color-btn-primary-hover-bg: var(--c-accent);
   --color-btn-primary-active-bg: var(--c-accent);
 }
