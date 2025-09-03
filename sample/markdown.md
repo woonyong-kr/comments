@@ -1,7 +1,5 @@
 # GitHub 기본 Markdown 한글 샘플
 
----
-
 ## 1) 제목(Headings)
 # 제목 H1
 ## 제목 H2
