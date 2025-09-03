@@ -231,3 +231,86 @@
 .gsc-comment-footer{
   border: 0 !important;
 }
+
+/* ===================== 패치 v2: 요청 반영 ===================== */
+
+/* 0) 공통 색 변수 */
+:root{
+  --c-accent: #2AC1BC;   /* 메인 포인트 */
+  --c-border: #eaeaea;   /* 연한 테두리 */
+}
+
+/* 1) 정렬 토글(오래된 순 / 새로운 순)
+   - 기본: 흰 배경 / 검정 텍스트 / 연회색 아웃라인
+   - 선택: 검정 배경 / 흰 텍스트 / 아웃라인 제거
+   - 호버: 포인트 배경 / 흰 텍스트 / 아웃라인 제거  */
+.gsc-header .gsc-order button,
+.gsc-header .gsc-sort  button{
+  border-radius: 9999px !important;
+  background: #fff !important;
+  color: #000 !important;
+  border: 1px solid var(--c-border) !important;
+  box-shadow: none !important;
+}
+.gsc-header .gsc-order button[aria-pressed="true"],
+.gsc-header .gsc-sort  button[aria-pressed="true"],
+.gsc-header .gsc-order .selected,
+.gsc-header .gsc-sort  .selected{
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #000 !important;
+}
+.gsc-header .gsc-order button:hover,
+.gsc-header .gsc-sort  button:hover{
+  background: var(--c-accent) !important;
+  color: #fff !important;
+  border-color: var(--c-accent) !important;
+}
+
+/* 2) 반응(🙂 추가)과 이모지 버튼: 외곽선/아웃라인 제거, 흰 배경 유지 */
+.gsc-reactions button,
+.gsc-reactions .btn{
+  border: 0 !important;
+  box-shadow: none !important;
+  background: #fff !important;
+}
+
+/* 3) 댓글 카드/블록: 외곽선과 구분선 제거(블록 사이에 선 생기지 않도록) */
+.gsc-comment{
+  border: 0 !important;
+  box-shadow: none !important;
+  border-bottom: 0 !important;
+}
+.gsc-comment + .gsc-comment{
+  border-top: 0 !important;
+}
+
+/* 4) 답글 작성 입력창: 이전 ‘필 형태’ 수정 철회 → 기본형(둥근 사각형)으로 복귀 */
+.gsc-comment-box textarea,
+.gsc-replies      textarea,
+.gsc-reply-box    textarea{
+  background: #fff !important;
+  border: 1px solid var(--c-border) !important;
+  border-radius: 12px !important;  /* 기본 둥근 사각형 */
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 5) 코드 블록(마크다운): 어두운 배경으로 통일 */
+.gsc-comment .markdown-body pre,
+.gsc-comment .markdown-body code{
+  background: #292C33 !important;
+  color: #f6f8fa !important;
+  border: 0 !important;
+}
+.gsc-comment .markdown-body pre code{
+  background: transparent !important; /* 중복 배경 방지 */
+  color: inherit !important;
+}
+
+/* 6) 불필요한 ‘가운데 선’ 유발 소지 제거(컨테이너 보더 리셋) */
+.gsc-comment-box,
+.gsc-header{
+  border: 0 !important;
+  box-shadow: none !important;
+}
