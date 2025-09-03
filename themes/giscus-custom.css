@@ -201,15 +201,6 @@
   box-shadow: none !important;
 }
 
-/* 마크다운 도움/힌트 바 숨김 */
-.gsc-comment-box [title*="Markdown"],
-.gsc-comment-box [aria-label*="Markdown"],
-.gsc-comment-box [title*="마크다운"],
-.gsc-comment-box .markdown-hint,
-.gsc-comment-box .tooltipped{
-  display: none !important;
-}
-
 /* =========================================================
    6) 마크다운 렌더링 : 제목/구분선/인용/코드 스타일
    ========================================================= */
