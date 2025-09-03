@@ -1,24 +1,108 @@
-/* giscus custom theme (light base) */
-:root {
-  color-scheme: light;
+/* =========================
+   giscus custom theme
+   (Tistory 스킨 스타일에 맞춤)
+   ========================= */
 
-  /* 기본 바탕/글자(필요시 조정) */
-  --color-canvas-default: #ffffff;
-  --color-fg-default: #24292f;
-
-  /* 링크/포커스 포인트 컬러 */
-  --color-accent-fg: #2AC1BC;            /* 링크 등 */
-  --color-accent-emphasis: #2AC1BC;
-
-  /* ✅ primary 버튼(로그인/댓글 등록) */
-  --color-btn-primary-text: #ffffff;
-  --color-btn-primary-bg: #2AC1BC;       /* 기본 배경 */
-  --color-btn-primary-hover-bg: #24b0ac; /* hover */
-  --color-btn-primary-active-bg: #1e9b96;/* active */
-  --color-btn-primary-border: transparent;
-  --color-btn-primary-shadow: 0 0 transparent;
-  --color-btn-primary-inset-shadow: 0 0 transparent;
+/* 기본 팔레트(블로그 변수 있으면 그 값을 사용) */
+:root{
+  --c-accent: var(--c-accent, #2AC1BC); /* 포인트색: 스킨 변수 우선, 없으면 #2AC1BC */
+  --g-text: #000;
+  --g-text-muted: #666;
+  --g-border: #eaeaea;
+  --g-muted: #fafafa;
+  --g-shadow: 3px 4px 9px .1px var(--g-border);
 }
 
-/* (선택) 버튼 모양 손보고 싶으면 */
-.btn, .btn-primary { border-radius: 8px; }
+/* ── GitHub/Primer 토큰 매핑: giscus가 내부에서 읽어가는 변수들 ── */
+:root{
+  /* 텍스트/배경 */
+  --color-fg-default: var(--g-text);
+  --color-fg-muted: var(--g-text-muted);
+  --color-canvas-default: #fff;
+  --color-canvas-subtle: #fff;
+
+  /* 링크/액센트 */
+  --color-accent-fg: var(--c-accent);
+  --color-accent-emphasis: var(--c-accent);
+
+  /* 보더 */
+  --color-border-default: var(--g-border);
+  --color-border-muted: var(--g-border);
+
+  /* 버튼(일반) */
+  --color-btn-text: var(--g-text);
+  --color-btn-bg: #fff;
+  --color-btn-border: var(--g-border);
+  --color-btn-hover-bg: var(--g-muted);
+  --color-btn-hover-border: var(--g-border);
+
+  /* 버튼(Primary) → 로그인 버튼 색상 여기서 바뀝니다 */
+  --color-btn-primary-text: #fff;
+  --color-btn-primary-bg: var(--c-accent);
+  --color-btn-primary-border: var(--c-accent);
+  --color-btn-primary-hover-bg: #25b6b1;   /* hover */
+  --color-btn-primary-selected-bg: #1aa39e;/* active */
+}
+
+/* ── 타이포: 블로그와 동일 폰트 사용 ── */
+.giscus, .giscus *{
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo",
+               "Malgun Gothic", Arial, sans-serif !important;
+}
+
+/* ── 카드/패널 룩: 흰 배경 + 얇은 보더 + 11px 라운드 + 은은한 섀도우 ── */
+/* GitHub Primer 컴포넌트명(Box, timeline-comment 등)을 넓게 커버 */
+.Box, .timeline-comment, .comment-body, .gsc-reactions, .gsc-comment-box,
+.discussion-timeline-actions, .previewable-comment-form, .pagination-loader-container {
+  background: #fff !important;
+  border: 1px solid var(--g-border) !important;
+  border-radius: 11px !important;
+  box-shadow: var(--g-shadow) !important;
+}
+
+/* 상단 탭(작성하기/미리보기) 보더/색 정리 */
+.tabnav-tab[aria-selected="true"]{
+  color: var(--g-text) !important;
+  background: #fff !important;
+  border-color: var(--g-border) !important;
+}
+.tabnav-tab{
+  border-color: var(--g-border) !important;
+}
+
+/* 에디터/텍스트영역 */
+textarea.form-control{
+  background: #fff !important;
+  border: 1px solid var(--g-border) !important;
+  border-radius: 11px !important;
+}
+textarea.form-control:focus,
+input:focus,
+button:focus,
+.btn:focus{
+  outline: none !important;
+  border-color: var(--c-accent) !important;
+  box-shadow: 0 0 0 3px rgba(42,193,188,.35) !important; /* 스킨의 포커스 링 느낌 */
+}
+
+/* 링크 색상 */
+.markdown-body a{ color: var(--c-accent) !important; }
+
+/* 리액션/라벨 같은 칩류를 스킨 톤으로 */
+.IssueLabel, .reaction-summary-item{
+  background: var(--g-muted) !important;
+  border: 1px solid var(--g-border) !important;
+  color: var(--g-text) !important;
+  border-radius: 999px !important;
+}
+
+/* 테이블/구분선도 연하게 */
+.markdown-body table, .markdown-body hr{
+  border-color: var(--g-border) !important;
+}
+
+/* 모바일 라운드 보정 */
+@media (max-width: 640px){
+  .Box, .timeline-comment{ border-radius: 10px !important; }
+}
