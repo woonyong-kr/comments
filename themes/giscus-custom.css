@@ -14,10 +14,9 @@
 
 /* =========================================================
    1) giscus Light theme 변수(Primer 토큰) → 위 팔레트로 매핑
-   - 원본 키는 유지하고 값만 치환해 안전하게 동작
    ========================================================= */
 main {
-  /* Prettylights(코드 하이라이트) — 포인트/중립만 팔레트로 보정 */
+  /* Prettylights(코드 하이라이트) */
   --color-prettylights-syntax-comment: #6e7781;
   --color-prettylights-syntax-constant: var(--c-accent);
   --color-prettylights-syntax-entity: #6e59f9;
@@ -49,7 +48,7 @@ main {
   --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
   --color-prettylights-syntax-constant-other-reference-link: #0a3069;
 
-  /* 기본 버튼(흰 바탕) → 경계/호버를 팔레트의 보더/소프트로 */
+  /* 기본 버튼(흰 바탕) */
   --color-btn-text: #1f2328;
   --color-btn-bg: var(--c-white);
   --color-btn-border: var(--c-border);
@@ -61,7 +60,7 @@ main {
   --color-btn-active-border: var(--c-border-strong);
   --color-btn-selected-bg: var(--c-soft-2);
 
-  /* 주요 버튼(로그인/등록) → 기본 검정, 호버/선택은 포인트 */
+  /* 주요 버튼(로그인/등록) */
   --color-btn-primary-text: #fff;
   --color-btn-primary-bg: var(--c-black);
   --color-btn-primary-border: var(--c-border);
@@ -71,9 +70,11 @@ main {
   --color-btn-primary-hover-border: var(--c-accent);
   --color-btn-primary-selected-bg: var(--c-accent);
   --color-btn-primary-selected-shadow: inset 0 1px 0 rgb(0 0 0 / 0%);
-  --color-btn-primary-disabled-text: rgb(255 255 255 / 80%);
-  --color-btn-primary-disabled-bg: var(--c-muted);
-  --color-btn-primary-disabled-border: var(--c-muted);
+
+  /* 비활성(입력 없음) — 검정 기반의 살짝 흐린 톤 */
+  --color-btn-primary-disabled-text: rgba(255,255,255,.70);
+  --color-btn-primary-disabled-bg: color-mix(in srgb, var(--c-black) 88%, #fff 12%);
+  --color-btn-primary-disabled-border: color-mix(in srgb, var(--c-black) 88%, #fff 12%);
 
   /* 리스트/세그먼트 토글 */
   --color-action-list-item-default-hover-bg: rgb(208 215 222 / 24%);
@@ -81,25 +82,27 @@ main {
   --color-segmented-control-button-bg: var(--c-white);
   --color-segmented-control-button-selected-border: var(--c-border-strong);
 
-  /* 본문/캔버스/경계 */
+  /* 본문/캔버스/경계
+     ⬇️ 지정한 5개 영역(입력 박스·탭·nested replies·댓글의 댓글·등)에 쓰이는
+     서브 캔버스 토큰을 '흰색'으로 고정 */
   --color-fg-default: #1F2328;
   --color-fg-muted: var(--c-muted);
   --color-fg-subtle: #6e7781;
   --color-canvas-default: var(--c-white);
   --color-canvas-overlay: var(--c-white);
-  --color-canvas-inset: var(--c-soft-2);
-  --color-canvas-subtle: var(--c-soft-2);
+  --color-canvas-inset: var(--c-white);   /* ← was var(--c-soft-2) */
+  --color-canvas-subtle: var(--c-white);  /* ← was var(--c-soft-2) */
   --color-border-default: var(--c-border);
   --color-border-muted: var(--c-border);
   --color-neutral-muted: rgb(175 184 193 / 20%);
 
-  /* 강조/포커스 계열은 전부 사이트 포인트로 통일 */
+  /* 강조/포커스 */
   --color-accent-fg: var(--c-accent);
   --color-accent-emphasis: var(--c-accent);
   --color-accent-muted: color-mix(in srgb, var(--c-accent) 40%, #fff);
   --color-accent-subtle: color-mix(in srgb, var(--c-accent) 12%, #fff);
 
-  /* 상태색(성공/경고/위험)은 GitHub 기본 톤 유지 */
+  /* 상태색(성공/경고/위험) */
   --color-success-fg: #1a7f37;
   --color-attention-fg: #9a6700;
   --color-attention-muted: rgb(212 167 44 / 40%);
@@ -114,57 +117,14 @@ main {
   --color-scale-blue-1: color-mix(in srgb, var(--c-accent) 18%, #fff);
 
   /*! Extensions from @primer/css/alerts/flash.scss */
-  --color-social-reaction-bg-hover: var(--c-soft-2); /* 기본값(필요 위치만 밑에서 흰색으로) */
+  --color-social-reaction-bg-hover: var(--c-white); /* ← was var(--c-soft-2) */
   --color-social-reaction-bg-reacted-hover: color-mix(in srgb, var(--c-accent) 18%, #fff);
 }
 
-/* giscus가 참조하는 로더 이미지는 그대로 유지 */
+/* 로더 이미지는 유지 */
 main .pagination-loader-container {
   background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line.svg");
 }
 main .gsc-loading-image {
   background-image: url("https://github.githubassets.com/images/mona-loading-default.gif");
-}
-
-/* =========================================================
-   giscus 특정 5개 영역만 흰 배경을 '강제' 고정
-   (테마 초기화에 덮이지 않도록 토큰 + 실제 배경을 동시 지정)
-   ========================================================= */
-
-/* 1) 답변 작성하기 입력 박스 바탕 */
-.giscus :is(.gsc-comment-box){
-  --color-canvas-inset:  #fff !important;
-  --color-canvas-subtle: #fff !important;
-  background: #fff !important;
-}
-/* 2) 작성하기/미리보기 탭 영역 바탕 */
-.giscus .gsc-comment-box :is(.tabnav, .tabnav-tabs, .tabnav-nav, .tabnav-tab, .tabnav-extra){
-  background: #fff !important;
-}
-
-/* 3) 답글하기(nested replies) 컨테이너 바탕 */
-.giscus :is(.gsc-replies, .gsc-reply-box, .gsc-reply){
-  --color-canvas-inset:  #fff !important;
-  --color-canvas-subtle: #fff !important;
-  background: #fff !important;
-}
-/* 댓글 카드 내부 컨텐트(벤더별 클래스 차이 대비)도 보정 */
-.giscus .gsc-comment .gsc-replies :is(.gsc-comment-content, .timeline-comment, .comment-body){
-  background: #fff !important;
-}
-
-/* 4) 이모지(반응) 버튼 hover 바탕 */
-.giscus .gsc-reactions{
-  --color-social-reaction-bg-hover: #fff !important;
-}
-/* 직접 버튼에 지정(요소 타입 다양성 대비) */
-.giscus .gsc-reactions :is(.gsc-reaction-button, .btn, .Button, .social-reaction-summary-item):hover{
-  background: #fff !important;
-}
-
-/* 5) 댓글의 댓글(inset/subtle 캔버스) 바탕 */
-.giscus .gsc-comment .gsc-replies :is(.gsc-reply, .gsc-reply-box){
-  --color-canvas-inset:  #fff !important;
-  --color-canvas-subtle: #fff !important;
-  background: #fff !important;
 }
