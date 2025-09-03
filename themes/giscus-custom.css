@@ -1,1 +1,47 @@
+/* =========================================================
+   0) 공통 색 · Primer 토큰 매핑 (강조색 #2F81F7 고정)
+   ========================================================= */
+:root{
+  --c-accent: #2F81F7;        /* 포커스/강조 기본색 */
+  --c-black:  #000;
+  --c-white:  #FFF;
+  --c-border: #eaeaea;        /* 연한 경계 */
+  --c-border-strong:#d1d5db;  /* 살짝 진한 경계 */
+  --c-muted:  #666;
+  --c-soft:   #ededed;        /* 인라인 코드/강조 배경 */
+  --c-soft-2: #f6f6f6;        /* 인용 등 아주 연한 배경 */
 
+  /* Primer v* 호환 강조 토큰(가능성 있는 키 전부 매핑) */
+  --color-accent-fg: var(--c-accent);
+  --color-accent-emphasis: var(--c-accent);
+  --color-focus-outline: var(--c-accent);
+  --fgColor-accent: var(--c-accent);                  /* 최신 토큰 */
+  --control-outlineColor: var(--c-accent);            /* 포커스 링 */
+  --button-default-focus-border: var(--c-accent);
+  --button-default-focus-shadow: 0 0 0 3px var(--c-accent);
+}
+
+/* Primer 기본 톤(배경/텍스트/경계) */
+:root{
+  --color-fg-default: #000;
+  --color-fg-muted: var(--c-muted);
+  --color-canvas-default: var(--c-white);
+  --color-canvas-subtle:  var(--c-white);
+  --color-border-default: var(--c-border);
+  --color-border-muted:   var(--c-border);
+
+  --color-btn-text:   #000;
+  --color-btn-bg:     var(--c-white);
+  --color-btn-border: var(--c-white);
+  --color-btn-hover-bg: var(--c-white);
+  --color-btn-hover-border: var(--c-white);
+  --color-btn-hover-shadow: none;
+  --color-btn-inset-shadow: none;
+  --color-btn-active-bg: var(--c-white);
+
+  --color-btn-primary-text:   #FFF;
+  --color-btn-primary-bg:     #000;
+  --color-btn-primary-border: var(--c-white);
+  --color-btn-primary-hover-bg: var(--c-accent);
+  --color-btn-primary-active-bg: var(--c-accent);
+}
