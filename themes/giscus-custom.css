@@ -107,16 +107,7 @@
 /* =========================================================
    3) 반응(이모지) : 외곽선/배경/그림자 제거(선택됨 포함)
    ========================================================= */
-.gsc-reactions .btn,
-.gsc-reactions .Button,
-.gsc-reaction-summary .btn,
-.gsc-reaction-summary .Button,
-.gsc-reactions .gsc-reaction-button,
-.gsc-reactions .gsc-reaction-button[aria-pressed="true"]{
-  border: 0 !important;
-  box-shadow: none !important;
-  background: #FFF !important;               /* 완전 투명 */
-}
+
 
 /* 상단 헤더의 “반응” 집계줄은 숨김(필요 시 사용) */
 /* .gsc-header [data-reactions]{ display:none !important; } */
@@ -210,7 +201,7 @@
 
 /* gfm은 .markdown-body .highlight pre 를 쓰므로 둘 다 지정 */
 .giscus :is(.markdown-body,.gsc-comment-box-markdown) :is(pre, .highlight pre){
-  background: #292C33 !important;            /* 요청 색 */
+background: var(--c-soft) !important;
   color: #f6f8fa !important;
   border: 0 !important;
   border-radius: 8px !important;
