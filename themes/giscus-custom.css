@@ -72,9 +72,9 @@ main {
   --color-btn-primary-selected-shadow: inset 0 1px 0 rgb(0 0 0 / 0%);
 
   /* ✅ 비활성(입력 없음) — 검정 기반의 살짝 흐린 톤 */
-  --color-btn-primary-disabled-text: rgba(255,255,255,.70); /* 글자만 살짝 흐리게 */
-  --color-btn-primary-disabled-bg: color-mix(in srgb, var(--c-black) 88%, #fff 12%);
-  --color-btn-primary-disabled-border: color-mix(in srgb, var(--c-black) 88%, #fff 12%);
+  --color-btn-primary-disabled-text: rgba(255,255,255,.80); /* 글자만 살짝 흐리게 */
+  --color-btn-primary-disabled-bg: var(--c-muted);
+  --color-btn-primary-disabled-border: var(--c-muted);
 
   /* 리스트/세그먼트 토글 */
   --color-action-list-item-default-hover-bg: rgb(208 215 222 / 24%);
@@ -97,8 +97,8 @@ main {
   /* 강조/포커스 */
   --color-accent-fg: var(--c-accent);
   --color-accent-emphasis: var(--c-accent);
-  --color-accent-muted: color-mix(in srgb, var(--c-accent) 40%, #fff);
-  --color-accent-subtle: color-mix(in srgb, var(--c-accent) 12%, #fff);
+  --color-accent-muted: var(--c-muted);
+  --color-accent-subtle: var(--c-muted);
 
   /* 상태색(성공/경고/위험) */
   --color-success-fg: #1a7f37;
@@ -108,6 +108,8 @@ main {
   --color-danger-fg: #d1242f;
   --color-danger-muted: rgb(255 129 130 / 40%);
   --color-danger-subtle: #ffebe9;
+
+   --color-input-bg: var(--c-white);
 
   /* 내부 그림자/스케일 컬러 */
   --color-primer-shadow-inset: inset 0 1px 0 rgb(208 215 222 / 20%);
