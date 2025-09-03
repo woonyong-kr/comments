@@ -71,7 +71,7 @@ main {
   --color-btn-primary-selected-bg: var(--c-accent);
   --color-btn-primary-selected-shadow: inset 0 1px 0 rgb(0 0 0 / 0%);
 
-  /* ✅ 비활성(입력 없음) — 검정 기반의 살짝 흐린 톤 */
+  /* 비활성(입력 없음) — 검정 기반의 살짝 흐린 톤 */
   --color-btn-primary-disabled-text: rgba(255,255,255,.80); /* 글자만 살짝 흐리게 */
   --color-btn-primary-disabled-bg: var(--c-muted);
   --color-btn-primary-disabled-border: var(--c-muted);
@@ -99,12 +99,6 @@ main {
   --color-accent-emphasis: var(--c-accent);
   --color-accent-muted: color-mix(in srgb, var(--c-accent) 40%, #fff);
   --color-accent-subtle: color-mix(in srgb, var(--c-accent) 12%, #fff);
-
-   /* 강조/뱃지 */
-  --bgColor-accent-emphasis: var(--c-accent); 
-  --bgColor-accent-muted: color-mix(in srgb, var(--c-accent) 12%, #fff); 
-  --borderColor-accent-muted: color-mix(in srgb, var(--c-accent) 35%, #fff); 
-  --fgColor-onEmphasis: var(--c-white);
    
   /* 상태색(성공/경고/위험) */
   --color-success-fg: #1a7f37;
@@ -114,8 +108,6 @@ main {
   --color-danger-fg: #d1242f;
   --color-danger-muted: rgb(255 129 130 / 40%);
   --color-danger-subtle: #ffebe9;
-
-   --color-input-bg: var(--c-white);
 
   /* 내부 그림자/스케일 컬러 */
   --color-primer-shadow-inset: inset 0 1px 0 rgb(208 215 222 / 20%);
@@ -134,3 +126,10 @@ main .pagination-loader-container {
 main .gsc-loading-image {
   background-image: url("https://github.githubassets.com/images/mona-loading-default.gif");
 }
+
+/* 모든 버튼/토글을 필 형태로 */
+.giscus :is(button, .btn, .Button, .BtnGroup-item, .SegmentedControl-button){ border-radius: 9999px !important; }
+.giscus :is(.BtnGroup, .SegmentedControl), .giscus .gsc-header .gsc-order{ border-radius: 9999px !important; overflow: hidden !important; }
+.giscus .gsc-comment-box .tabnav, .giscus .gsc-comment-box .tabnav .tabnav-tabs{ border-radius: 9999px !important; overflow: hidden !important; }
+.giscus .gsc-comment-box .tabnav .tabnav-tab{ border-radius: 9999px !important; }
+.giscus :is( .BtnGroup-item[aria-selected="true"], .btn[aria-pressed="true"], .SegmentedControl-button[aria-pressed="true"]) { border-radius: 9999px !important;}
