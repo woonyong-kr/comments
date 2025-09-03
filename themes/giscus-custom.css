@@ -71,8 +71,8 @@ main {
   --color-btn-primary-selected-bg: var(--c-accent);
   --color-btn-primary-selected-shadow: inset 0 1px 0 rgb(0 0 0 / 0%);
 
-  /* 비활성(입력 없음) — 검정 기반의 살짝 흐린 톤 */
-  --color-btn-primary-disabled-text: rgba(255,255,255,.70);
+  /* ✅ 비활성(입력 없음) — 검정 기반의 살짝 흐린 톤 */
+  --color-btn-primary-disabled-text: rgba(255,255,255,.70); /* 글자만 살짝 흐리게 */
   --color-btn-primary-disabled-bg: color-mix(in srgb, var(--c-black) 88%, #fff 12%);
   --color-btn-primary-disabled-border: color-mix(in srgb, var(--c-black) 88%, #fff 12%);
 
@@ -82,16 +82,14 @@ main {
   --color-segmented-control-button-bg: var(--c-white);
   --color-segmented-control-button-selected-border: var(--c-border-strong);
 
-  /* 본문/캔버스/경계
-     ⬇️ 지정한 5개 영역(입력 박스·탭·nested replies·댓글의 댓글·등)에 쓰이는
-     서브 캔버스 토큰을 '흰색'으로 고정 */
+  /* 본문/캔버스/경계 */
   --color-fg-default: #1F2328;
   --color-fg-muted: var(--c-muted);
   --color-fg-subtle: #6e7781;
   --color-canvas-default: var(--c-white);
   --color-canvas-overlay: var(--c-white);
-  --color-canvas-inset: var(--c-white);   /* ← was var(--c-soft-2) */
-  --color-canvas-subtle: var(--c-white);  /* ← was var(--c-soft-2) */
+  --color-canvas-inset: var(--c-soft-2);
+  --color-canvas-subtle: var(--c-soft-2);
   --color-border-default: var(--c-border);
   --color-border-muted: var(--c-border);
   --color-neutral-muted: rgb(175 184 193 / 20%);
@@ -117,7 +115,7 @@ main {
   --color-scale-blue-1: color-mix(in srgb, var(--c-accent) 18%, #fff);
 
   /*! Extensions from @primer/css/alerts/flash.scss */
-  --color-social-reaction-bg-hover: var(--c-white); /* ← was var(--c-soft-2) */
+  --color-social-reaction-bg-hover: var(--c-soft-2);
   --color-social-reaction-bg-reacted-hover: color-mix(in srgb, var(--c-accent) 18%, #fff);
 }
 
@@ -127,12 +125,4 @@ main .pagination-loader-container {
 }
 main .gsc-loading-image {
   background-image: url("https://github.githubassets.com/images/mona-loading-default.gif");
-}
-
-/* GFM 코드블록 배경만 어둡게 복원 */
-.giscus :is(.markdown-body, .gsc-comment-box-markdown) :is(pre, .highlight pre){
-  background:#292C33 !important; color:#f6f8fa !important; border:0 !important;
-}
-.giscus :is(.markdown-body, .gsc-comment-box-markdown) :is(pre, .highlight pre) > code{
-  background:transparent !important; color:inherit !important;
 }
