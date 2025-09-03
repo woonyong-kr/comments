@@ -1,0 +1,24 @@
+/* giscus custom theme (light base) */
+:root {
+  color-scheme: light;
+
+  /* 기본 바탕/글자(필요시 조정) */
+  --color-canvas-default: #ffffff;
+  --color-fg-default: #24292f;
+
+  /* 링크/포커스 포인트 컬러 */
+  --color-accent-fg: #2AC1BC;            /* 링크 등 */
+  --color-accent-emphasis: #2AC1BC;
+
+  /* ✅ primary 버튼(로그인/댓글 등록) */
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #2AC1BC;       /* 기본 배경 */
+  --color-btn-primary-hover-bg: #24b0ac; /* hover */
+  --color-btn-primary-active-bg: #1e9b96;/* active */
+  --color-btn-primary-border: transparent;
+  --color-btn-primary-shadow: 0 0 transparent;
+  --color-btn-primary-inset-shadow: 0 0 transparent;
+}
+
+/* (선택) 버튼 모양 손보고 싶으면 */
+.btn, .btn-primary { border-radius: 8px; }
