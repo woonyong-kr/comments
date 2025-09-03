@@ -219,7 +219,7 @@
 }
 /* 코드블록 내부 code 는 투명 처리(이중 배경 방지) */
 .giscus :is(.markdown-body,.gsc-comment-box-markdown) :is(pre, .highlight pre) > code{
-  background: transparent !important;
+  background: var(--c-soft) !important;
   color: inherit !important;
 }
 /* 인라인 코드(블록 제외)는 소프트 회색 */
