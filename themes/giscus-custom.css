@@ -71,6 +71,7 @@
 /* =========================================================
    2) 정렬 토글(오래된 순 / 새로운 순) : 필 모양, 상태별 색상
    ========================================================= */
+
 .gsc-header .gsc-order button,
 .gsc-header .gsc-order .BtnGroup-item{
   border-radius: 9999px !important;            /* 양끝 반원 */
@@ -79,18 +80,7 @@
   color: #000 !important;                      /* 비활성 텍스트 */
   box-shadow: none !important;
 }
-.gsc-header .gsc-order button[aria-pressed="true"],
-.gsc-header .gsc-order .BtnGroup-item[aria-selected="true"]{
-  background: var(--c-black) !important;       /* 활성: 검정 배경 */
-  color: #fff !important;                      /* 활성: 흰 텍스트 */
-  border-color: transparent !important;
-}
-.gsc-header .gsc-order button:hover,
-.gsc-header .gsc-order .BtnGroup-item:hover{
-  background: var(--c-accent) !important;      /* 호버: 포인트 */
-  color: #fff !important;
-  border-color: transparent !important;
-}
+
 
 /* =========================================================
    3) 반응(이모지) : 외곽선/배경/그림자 제거(선택됨 포함)
