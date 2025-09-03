@@ -54,7 +54,7 @@
 .giscus .gsc-comment .gsc-replies,
 .giscus .gsc-comment-footer,
 .giscus .gsc-comment-box{
-  background: transparent !important;
+  background: var(--c-white) !important;
   border: 0 !important;
   box-shadow: none !important;
 }
@@ -91,12 +91,12 @@
 ){
   background: #000 !important;                       /* 선택됨 */
   color: #fff !important;
-  border-color: transparent !important;
+  border-color: var(--c-white) !important;
 }
 .giscus .gsc-header .gsc-order :is(button,.BtnGroup-item,.btn):hover{
   background: var(--c-accent) !important;            /* 호버 */
   color: #fff !important;
-  border-color: transparent !important;
+  border-color: var(--c-white) !important;
 }
 
 /* =========================================================
@@ -132,7 +132,7 @@
 .gsc-comment-box .btn:not(.btn-primary):hover{
   background: var(--c-accent) !important;
   color: #fff !important;
-  border-color: transparent !important;
+  border-color: var(--c-white) !important;
 }
 
 /* 로그인 버튼 라벨을 “로그인”으로 축약 */
@@ -187,7 +187,7 @@
   overflow: auto !important;
 }
 .giscus :is(.markdown-body,.gsc-comment-box-markdown) :is(pre, .highlight pre) > code{
-  background: transparent !important;                 /* 이중 배경 방지 */
+  background: var(--c-soft) !important;                 /* 이중 배경 방지 */
   color: inherit !important;
 }
 .giscus .markdown-body code:not(pre > code),
