@@ -462,3 +462,43 @@
   }
 }
 
+/* =============== Reply box 모양/포커스 완전 고정 =============== */
+.giscus {
+  --wy-border: #e5e7eb;          /* 평상시 테두리 */
+  --wy-border-strong: #d1d5db;   /* 포커스 시 테두리(진회색) */
+  --wy-radius-pill: 28px;        /* 라이트/다크 동일 반지름 */
+}
+
+/* 바깥 래퍼(포커스 들어오면 생기는 큰 박스) → 모양/강조 제거 */
+.giscus :is(.gsc-comment-box, .gsc-reply, .gsc-replies .gsc-reply) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 텍스트영역 자체만 일관된 모양으로 고정 */
+.giscus textarea {
+  background: transparent !important;
+  border: 1px solid var(--wy-border) !important;
+  border-radius: var(--wy-radius-pill) !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 포커스 들어와도 색/그림자 진해지지 않게 고정 */
+.giscus :is(textarea, .gsc-comment-box, .gsc-reply):is(:focus, :focus-visible, :focus-within) {
+  outline: 0 !important;
+  box-shadow: none !important;
+  border-color: var(--wy-border-strong) !important;   /* 조금 진한 회색 */
+}
+
+/* 포커스 시 입력창 아래쪽에 깔리는 추가 하이라이트/보더 제거 */
+.giscus .gsc-reply + * {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* “Aa/마크다운 도움” 같은 보조 힌트 바가 있다면 숨김 */
+.giscus :is(.gsc-help, .gsc-comment-box-markdown-hint) {
+  display: none !important;
+}
