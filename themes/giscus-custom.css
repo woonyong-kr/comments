@@ -100,17 +100,7 @@
 }
 
 /* =========================================================
-   3) 반응(이모지) : 기본은 흰 배경, 외곽선/그림자 제거
-   ========================================================= */
-.giscus .gsc-reactions :is(.btn,.Button,.gsc-reaction-button),
-.giscus .gsc-reaction-summary :is(.btn,.Button){
-  background: #FFF !important;                        /* 내용과 분리 */
-  border: 0 !important;
-  border-radius: 9999px !important;
-}
-
-/* =========================================================
-   4) 배지/버튼 : 소유자 배지, 로그인/등록/취소
+   3) 배지/버튼 : 소유자 배지, 로그인/등록/취소
    ========================================================= */
 .Label, .IssueLabel, .gsc-comment .Label{
   background: var(--c-accent) !important;      /* 소유자 배지 */
@@ -152,7 +142,7 @@
 }
 
 /* =========================================================
-   5) 입력영역 : 부모 폭과 동일한 둥근 사각형 + 기본 포커스 제거
+   4) 입력영역 : 부모 폭과 동일한 둥근 사각형 + 기본 포커스 제거
    ========================================================= */
 .giscus :is(.gsc-comment-box textarea, .gsc-replies textarea, .gsc-reply-box textarea, textarea){
   width: 100% !important;
@@ -171,7 +161,7 @@
 }
 
 /* =========================================================
-   6) 마크다운 : 제목/구분선/인용/코드
+   5) 마크다운 : 제목/구분선/인용/코드
    ========================================================= */
 .giscus .markdown-body h1,
 .giscus .markdown-body h2{
@@ -216,7 +206,7 @@
 }
 
 /* =========================================================
-   7) “파란 하이라이트” 최우선 강제(링크/버튼/이모지/입력)
+   6) “파란 하이라이트” 최우선 강제(링크/버튼/입력)
    ========================================================= */
 /* 키보드 포커스가 보이도록 공통 규칙(최우선 !important) */
 .giscus :is(a, button, [role="button"], .btn, .Button, .gsc-reaction-button):focus-visible{
@@ -243,13 +233,4 @@
 .giscus :is(.gsc-comment-box textarea, .gsc-replies textarea, .gsc-reply-box textarea):focus{
   border-color: var(--c-accent) !important;
   box-shadow: 0 0 0 2px var(--c-accent) inset !important;
-}
-
-/* 이모지(반응) 선택/포커스 : 흰 배경 + 두꺼운 파란 링 */
-.giscus .gsc-reactions .gsc-reaction-button:is(:focus-visible,[aria-pressed="true"]){
-  background: #fff !important;
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: 0 0 0 3px var(--c-accent) !important;
-  border-radius: 9999px !important;
 }
