@@ -2,7 +2,7 @@
    0) 공통 색 변수 
    ========================================================= */
 :root{
-  --c-accent: #2AC1BC;     /* 포인트 */
+  --c-accent: #2F81F7;     /* 포인트 */
   --c-black:  #000;
   --c-white:  #FFF;
   --c-border: #eaeaea;     /* 연한 경계 */
@@ -108,7 +108,7 @@
 .gsc-reactions .gsc-reaction-button[aria-pressed="true"]{
   border: 0 !important;
   box-shadow: none !important;
-  background: #FFF0 !important;               /* 완전 투명 */
+  background: #FFF !important;               /* 완전 투명 */
 }
 
 /* 상단 헤더의 “반응” 집계줄은 숨김(필요 시 사용) */
@@ -174,23 +174,6 @@
   margin: 0 !important;
   outline: 0 !important;
   box-shadow: none !important;               /* 진한 포커스 제거 */
-}
-/* 포커스 시에도 진한 하이라이트/청록 링 방지 */
-.giscus .gsc-comment-box textarea:focus{
-  border-color: var(--c-border-strong) !important;
-  box-shadow: none !important;
-}
-/* textarea 아래쪽에 깔리는 보조 하이라이트 박스 제거(있을 경우) */
-.giscus .gsc-reply + *{
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-/* 포커스가 들어올 때 래퍼에 생기는 추가 보더/그림자 제거 */
-.giscus :is(.gsc-reply, .gsc-replies .gsc-reply, .gsc-comment-box){
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
 }
 
 /* 탭(작성하기/미리보기) 외곽선 제거 */
