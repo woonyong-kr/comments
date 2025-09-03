@@ -106,44 +106,48 @@
 .giscus .gsc-reaction-summary :is(.btn,.Button){
   background: #FFF !important;                        /* 내용과 분리 */
   border: 0 !important;
-  box-shadow: none !important;
   border-radius: 9999px !important;
 }
 
 /* =========================================================
    4) 배지/버튼 : 소유자 배지, 로그인/등록/취소
    ========================================================= */
-.giscus .Label, .giscus .IssueLabel, .giscus .gsc-comment .Label{
-  background: var(--c-accent) !important;
+.Label, .IssueLabel, .gsc-comment .Label{
+  background: var(--c-accent) !important;      /* 소유자 배지 */
   color: #fff !important;
   border: 0 !important;
 }
-.giscus .gsc-login-button .btn-primary,
-.giscus .gsc-comment-box .btn-primary{
-  border-radius: 9999px !important;
-  background: #000 !important;
+
+.gsc-login-button .btn-primary,
+.gsc-comment-box .btn-primary{
+  border-radius: 9999px !important;            /* 로그인/등록 */
+  background: var(--c-black) !important;
   color: #fff !important;
   border: 0 !important;
   box-shadow: none !important;
 }
-.giscus .gsc-login-button .btn-primary:hover,
-.giscus .gsc-comment-box .btn-primary:hover{
-  background: var(--c-accent) !important;
+.gsc-login-button .btn-primary:hover,
+.gsc-comment-box .btn-primary:hover{
+  background: var(--c-accent) !important;      /* 호버: 포인트 */
 }
-.giscus .gsc-comment-box .btn:not(.btn-primary){
+
+/* 취소 버튼 : 얇은 테두리 → 호버 시 포인트 배경 */
+.gsc-comment-box .btn:not(.btn-primary){
   border-radius: 9999px !important;
   background: var(--c-white) !important;
   color: #000 !important;
   border: 1px solid var(--c-border) !important;
   box-shadow: none !important;
 }
-.giscus .gsc-comment-box .btn:not(.btn-primary):hover{
+.gsc-comment-box .btn:not(.btn-primary):hover{
   background: var(--c-accent) !important;
   color: #fff !important;
   border-color: transparent !important;
 }
-.giscus .gsc-login-button .btn-primary > span{ font-size:0 !important; }
-.giscus .gsc-login-button .btn-primary > span::after{
+
+/* 로그인 버튼 라벨을 “로그인”으로 축약 */
+.gsc-login-button .btn-primary > span{ font-size:0 !important; }
+.gsc-login-button .btn-primary > span::after{
   content: "로그인"; font-size:14px; line-height:1; margin-left:6px;
 }
 
