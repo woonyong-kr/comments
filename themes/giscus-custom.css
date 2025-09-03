@@ -1,18 +1,27 @@
 /* =========================================================
-   0) 공통 색 변수 (포커스/강조색은 #2F81F7)
+   0) 공통 색 · Primer 토큰 매핑 (강조색 #2F81F7 고정)
    ========================================================= */
 :root{
-  --c-accent: #2F81F7;        /* 포커스/강조 */
+  --c-accent: #2F81F7;        /* 포커스/강조 기본색 */
   --c-black:  #000;
   --c-white:  #FFF;
   --c-border: #eaeaea;        /* 연한 경계 */
-  --c-border-strong:#d1d5db;  /* 살짝 더 진한 경계 */
+  --c-border-strong:#d1d5db;  /* 살짝 진한 경계 */
   --c-muted:  #666;
   --c-soft:   #ededed;        /* 인라인 코드/강조 배경 */
   --c-soft-2: #f6f6f6;        /* 인용 등 아주 연한 배경 */
+
+  /* Primer v* 호환 강조 토큰(가능성 있는 키 전부 매핑) */
+  --color-accent-fg: var(--c-accent);
+  --color-accent-emphasis: var(--c-accent);
+  --color-focus-outline: var(--c-accent);
+  --fgColor-accent: var(--c-accent);                  /* 최신 토큰 */
+  --control-outlineColor: var(--c-accent);            /* 포커스 링 */
+  --button-default-focus-border: var(--c-accent);
+  --button-default-focus-shadow: 0 0 0 3px var(--c-accent);
 }
 
-/* Primer 토큰 최소 매핑(톤 통일) */
+/* Primer 기본 톤(배경/텍스트/경계) */
 :root{
   --color-fg-default: #000;
   --color-fg-muted: var(--c-muted);
@@ -21,7 +30,6 @@
   --color-border-default: var(--c-border);
   --color-border-muted:   var(--c-border);
 
-  /* 기본 버튼(흰 바탕) */
   --color-btn-text:   #000;
   --color-btn-bg:     var(--c-white);
   --color-btn-border: transparent;
@@ -31,9 +39,8 @@
   --color-btn-inset-shadow: none;
   --color-btn-active-bg: var(--c-white);
 
-  /* 주요 버튼(검정 → 호버 시 포인트) */
   --color-btn-primary-text:   #FFF;
-  --color-btn-primary-bg:     var(--c-black);
+  --color-btn-primary-bg:     #000;
   --color-btn-primary-border: transparent;
   --color-btn-primary-hover-bg: var(--c-accent);
   --color-btn-primary-active-bg: var(--c-accent);
@@ -51,62 +58,56 @@
   border: 0 !important;
   box-shadow: none !important;
 }
-
-/* 댓글 사이 중앙선 방지 */
 .giscus .gsc-comment{ border-bottom: 0 !important; }
 .giscus .gsc-comment + .gsc-comment{ border-top: 0 !important; }
 
-/* 답글 컨테이너 : 위쪽 직선, 아래만 둥글게 */
 .giscus .gsc-reply-box,
 .giscus .gsc-comment .gsc-replies{
   background: var(--c-white) !important;
   border: 0 !important;
   box-shadow: none !important;
-  border-radius: 0 0 20px 20px !important;
+  border-radius: 0 0 20px 20px !important;           /* 위 직선, 아래만 둥글게 */
 }
 
-/* 작성하기 컨테이너 좌/우 패딩 제거 → 입력창이 부모 폭과 동일 */
 .giscus .gsc-comment-box{
-  padding-left: 0 !important;
+  padding-left: 0 !important;                        /* 부모 폭에 맞춤 */
   padding-right: 0 !important;
 }
 
 /* =========================================================
    2) 정렬 토글(오래된/새로운) : 상태별 색상/모양
    ========================================================= */
-/* 비활성: 흰 배경/검정 텍스트/연한 테두리 */
 .giscus .gsc-header .gsc-order :is(button,.BtnGroup-item,.btn,.btn-outline){
   border-radius: 9999px !important;
-  border: 1px solid var(--c-border) !important;
+  border: 1px solid var(--c-border) !important;      /* 비활성 */
   background: var(--c-white) !important;
   color: #000 !important;
   box-shadow: none !important;
 }
-/* 선택: 검정 배경/흰 텍스트/테두리 제거 */
 .giscus .gsc-header .gsc-order :is(
   button[aria-pressed="true"],
   .BtnGroup-item[aria-selected="true"],
   .btn[aria-pressed="true"]
 ){
-  background: var(--c-black) !important;
+  background: #000 !important;                       /* 선택됨 */
   color: #fff !important;
   border-color: transparent !important;
 }
-/* 호버: 포인트 배경/흰 텍스트/테두리 제거 */
 .giscus .gsc-header .gsc-order :is(button,.BtnGroup-item,.btn):hover{
-  background: var(--c-accent) !important;
+  background: var(--c-accent) !important;            /* 호버 */
   color: #fff !important;
   border-color: transparent !important;
 }
 
 /* =========================================================
-   3) 반응(이모지) : 외곽선/그림자 제거 + 기본 흰 배경
+   3) 반응(이모지) : 기본은 흰 배경, 외곽선/그림자 제거
    ========================================================= */
 .giscus .gsc-reactions :is(.btn,.Button,.gsc-reaction-button),
 .giscus .gsc-reaction-summary :is(.btn,.Button){
+  background: #FFF !important;                        /* 내용과 분리 */
   border: 0 !important;
   box-shadow: none !important;
-  background: #FFF !important; /* 선택 전/후 모두 흰 배경 유지 */
+  border-radius: 9999px !important;
 }
 
 /* =========================================================
@@ -117,12 +118,10 @@
   color: #fff !important;
   border: 0 !important;
 }
-
-/* 로그인/등록 버튼 : 검정 → 호버 시 포인트 */
 .giscus .gsc-login-button .btn-primary,
 .giscus .gsc-comment-box .btn-primary{
   border-radius: 9999px !important;
-  background: var(--c-black) !important;
+  background: #000 !important;
   color: #fff !important;
   border: 0 !important;
   box-shadow: none !important;
@@ -131,8 +130,6 @@
 .giscus .gsc-comment-box .btn-primary:hover{
   background: var(--c-accent) !important;
 }
-
-/* 취소 버튼 : 얇은 테두리 → 호버 시 포인트 배경 */
 .giscus .gsc-comment-box .btn:not(.btn-primary){
   border-radius: 9999px !important;
   background: var(--c-white) !important;
@@ -145,15 +142,13 @@
   color: #fff !important;
   border-color: transparent !important;
 }
-
-/* 로그인 라벨을 “로그인”으로 축약 */
 .giscus .gsc-login-button .btn-primary > span{ font-size:0 !important; }
 .giscus .gsc-login-button .btn-primary > span::after{
   content: "로그인"; font-size:14px; line-height:1; margin-left:6px;
 }
 
 /* =========================================================
-   5) 입력영역 : 모양 통일 + 기본 포커스 제거(아래 7번에서 복원)
+   5) 입력영역 : 부모 폭과 동일한 둥근 사각형 + 기본 포커스 제거
    ========================================================= */
 .giscus :is(.gsc-comment-box textarea, .gsc-replies textarea, .gsc-reply-box textarea, textarea){
   width: 100% !important;
@@ -165,8 +160,6 @@
   outline: 0 !important;
   box-shadow: none !important;
 }
-
-/* 탭(작성하기/미리보기) 외곽선 제거 */
 .giscus .gsc-comment-box :is(.tabnav, .tabnav-tab){
   background: var(--c-white) !important;
   border: 0 !important;
@@ -199,13 +192,10 @@
   padding: 12px !important;
   overflow: auto !important;
 }
-/* 블록 내부 code 이중 배경 방지 */
 .giscus :is(.markdown-body,.gsc-comment-box-markdown) :is(pre, .highlight pre) > code{
-  background: transparent !important;
+  background: transparent !important;                 /* 이중 배경 방지 */
   color: inherit !important;
 }
-
-/* 인라인 코드/강조 */
 .giscus .markdown-body code:not(pre > code),
 .giscus .markdown-body tt,
 .giscus .markdown-body kbd,
@@ -215,8 +205,6 @@
   border-radius: 4px !important;
   padding: .1em .35em !important;
 }
-
-/* 코드 복사 버튼 평면화 */
 .giscus .markdown-body :is(.clipboard-btn, .btn-octicon){
   border: 0 !important;
   box-shadow: none !important;
@@ -224,26 +212,40 @@
 }
 
 /* =========================================================
-   7) 포커스/선택 하이라이트 “복원” (요청 색상 #2F81F7)
+   7) “파란 하이라이트” 최우선 강제(링크/버튼/이모지/입력)
    ========================================================= */
-/* 입력창: 포커스 시 파란 하이라이트 */
+/* 키보드 포커스가 보이도록 공통 규칙(최우선 !important) */
+.giscus :is(a, button, [role="button"], .btn, .Button, .gsc-reaction-button):focus-visible{
+  outline: 2px solid var(--c-accent) !important;      /* 선명한 파란 테두리 */
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px var(--c-accent) !important;   /* 보조 링(겹침 방지) */
+  border-radius: 8px !important;
+}
+
+/* 링크 포커스 가시성 강화(본문/마크다운) */
+.giscus .markdown-body a:focus-visible{
+  background: #fff !important;                        /* 흰 바탕 위 강조 */
+  border-radius: 4px !important;
+}
+
+/* 입력창 포커스(바깥 래퍼 + 텍스트영역) */
 .giscus .gsc-comment-box:focus-within,
 .giscus .gsc-reply:focus-within,
 .giscus .gsc-replies .gsc-reply:focus-within{
-  box-shadow: 0 0 0 3px var(--c-accent) !important;  /* 외곽 링 */
+  box-shadow: 0 0 0 3px var(--c-accent) !important;
   border-radius: 28px !important;
   background: #fff !important;
 }
 .giscus :is(.gsc-comment-box textarea, .gsc-replies textarea, .gsc-reply-box textarea):focus{
-  border-color: var(--c-accent) !important;          /* 테두리 색상 */
-  box-shadow: 0 0 0 2px var(--c-accent) inset !important; /* 안쪽 살짝 강조 */
+  border-color: var(--c-accent) !important;
+  box-shadow: 0 0 0 2px var(--c-accent) inset !important;
 }
 
-/* 이모지: 선택/포커스 시 굵은 파란 링 + 흰 배경 유지 */
+/* 이모지(반응) 선택/포커스 : 흰 배경 + 두꺼운 파란 링 */
 .giscus .gsc-reactions .gsc-reaction-button:is(:focus-visible,[aria-pressed="true"]){
   background: #fff !important;
   border: 0 !important;
   outline: 0 !important;
-  box-shadow: 0 0 0 3px var(--c-accent) !important;   /* 두꺼운 링 */
-  border-radius: 9999px !important;                  /* 동그란 칩 */
+  box-shadow: 0 0 0 3px var(--c-accent) !important;
+  border-radius: 9999px !important;
 }
