@@ -71,9 +71,9 @@ main {
   --color-btn-primary-hover-border: var(--c-accent);
   --color-btn-primary-selected-bg: var(--c-accent);
   --color-btn-primary-selected-shadow: inset 0 1px 0 rgb(0 0 0 / 0%);
-  --color-btn-primary-disabled-text: rgb(255 255 255 / 80%);
-  --color-btn-primary-disabled-bg: #bcd3ff; /* 포인트 톤 다운 */
-  --color-btn-primary-disabled-border: var(--c-border);
+  --color-btn-primary-disabled-text: rgba(255,255,255,.70); /* 글자만 살짝 흐리게 */
+  --color-btn-primary-disabled-bg: color-mix(in srgb, var(--c-black) 88%, #fff 12%);
+  --color-btn-primary-disabled-border: color-mix(in srgb, var(--c-black) 88%, #fff 12%);
 
   /* 리스트/세그먼트 토글 */
   --color-action-list-item-default-hover-bg: rgb(208 215 222 / 24%);
