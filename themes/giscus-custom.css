@@ -127,53 +127,44 @@ main .gsc-loading-image {
 }
 
 /* =========================================================
-   2) 스코프 패치: 특정 UI만 #fff 로 보이게 (나머지는 원래값 유지)
-   - 대상 5곳: (1) 답변 작성 입력영역, (2) 탭영역,
-               (3) nested replies 컨테이너, (4) 이모지 hover,
-               (5) 댓글의 댓글(inset/subtle) 바탕
+   giscus 특정 5개 영역만 흰 배경을 '강제' 고정
+   (테마 초기화에 덮이지 않도록 토큰 + 실제 배경을 동시 지정)
    ========================================================= */
 
-/* (1)(2) 답변 작성하기 입력 박스 & (탭) 작성하기/미리보기 영역 */
-.giscus .gsc-comment-box{
-  /* 이 블록 내부에서만 서브 캔버스 계열을 흰색으로 */
-  --color-canvas-inset:  #fff;
-  --color-canvas-subtle: #fff;
-
-  /* 세그먼트 컨트롤(탭) 바탕도 흰색으로 */
-  --color-segmented-control-bg:        #fff;
-  --color-segmented-control-button-bg: #fff;
+/* 1) 답변 작성하기 입력 박스 바탕 */
+.giscus :is(.gsc-comment-box){
+  --color-canvas-inset:  #fff !important;
+  --color-canvas-subtle: #fff !important;
+  background: #fff !important;
 }
-/* 탭 컨테이너가 토큰을 안쓰는 경우를 대비한 안전장치 */
-.giscus .gsc-comment-box .tabnav,
-.giscus .gsc-comment-box .tabnav-tabs{
+/* 2) 작성하기/미리보기 탭 영역 바탕 */
+.giscus .gsc-comment-box :is(.tabnav, .tabnav-tabs, .tabnav-nav, .tabnav-tab, .tabnav-extra){
   background: #fff !important;
 }
 
-/* (3)(5) 답글하기 컨테이너 및 댓글의 댓글 서브 캔버스 바탕 */
-.giscus .gsc-replies,
-.giscus .gsc-reply-box{
-  --color-canvas-inset:  #fff;
-  --color-canvas-subtle: #fff;
+/* 3) 답글하기(nested replies) 컨테이너 바탕 */
+.giscus :is(.gsc-replies, .gsc-reply-box, .gsc-reply){
+  --color-canvas-inset:  #fff !important;
+  --color-canvas-subtle: #fff !important;
+  background: #fff !important;
 }
-/* 필요 시 컨테이너 자체 배경 보정 */
-.giscus .gsc-replies,
-.giscus .gsc-reply-box{
-  background: #fff; /* 토큰이 아닌 직접 배경을 쓰는 경우 대비 */
+/* 댓글 카드 내부 컨텐트(벤더별 클래스 차이 대비)도 보정 */
+.giscus .gsc-comment .gsc-replies :is(.gsc-comment-content, .timeline-comment, .comment-body){
+  background: #fff !important;
 }
 
-/* (4) 이모지(반응) 버튼 hover 배경만 흰색 */
+/* 4) 이모지(반응) 버튼 hover 바탕 */
 .giscus .gsc-reactions{
-  --color-social-reaction-bg-hover: #fff;
+  --color-social-reaction-bg-hover: #fff !important;
 }
-/* 호환용: 직접 버튼에 배경 지정 */
-.giscus .gsc-reactions .gsc-reaction-button:hover{
+/* 직접 버튼에 지정(요소 타입 다양성 대비) */
+.giscus .gsc-reactions :is(.gsc-reaction-button, .btn, .Button, .social-reaction-summary-item):hover{
   background: #fff !important;
 }
 
-/* 반응 팝업(선택창)이 서브 캔버스 토큰을 쓰는 경우 대비 */
-.giscus .gsc-reactions [role="dialog"],
-.giscus .gsc-reactions .Overlay,
-.giscus .gsc-reactions .SelectMenu{
-  --color-canvas-inset:  #fff;
-  --color-canvas-subtle: #fff;
+/* 5) 댓글의 댓글(inset/subtle 캔버스) 바탕 */
+.giscus .gsc-comment .gsc-replies :is(.gsc-reply, .gsc-reply-box){
+  --color-canvas-inset:  #fff !important;
+  --color-canvas-subtle: #fff !important;
+  background: #fff !important;
 }
