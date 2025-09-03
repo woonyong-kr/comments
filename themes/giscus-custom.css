@@ -54,7 +54,7 @@
 .gsc-comment .gsc-replies,
 .gsc-comment-footer,
 .gsc-comment-box{
-  background: transparent !important;
+  background: var(--c-white) !important;
   border: 0 !important;
   box-shadow: none !important;
 }
