@@ -128,3 +128,11 @@ main .pagination-loader-container {
 main .gsc-loading-image {
   background-image: url("https://github.githubassets.com/images/mona-loading-default.gif");
 }
+
+/* GFM 코드블록 배경만 어둡게 복원 */
+.giscus :is(.markdown-body, .gsc-comment-box-markdown) :is(pre, .highlight pre){
+  background:#292C33 !important; color:#f6f8fa !important; border:0 !important;
+}
+.giscus :is(.markdown-body, .gsc-comment-box-markdown) :is(pre, .highlight pre) > code{
+  background:transparent !important; color:inherit !important;
+}
