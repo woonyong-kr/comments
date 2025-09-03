@@ -95,13 +95,13 @@
 ){
   background: var(--c-black) !important;
   color: #fff !important;
-  border-color: transparent !important;
+  border-color: var(--c-white) !important;
 }
 /* 호버: 포인트 배경/흰 글자/외곽선 제거 */
 .giscus .gsc-header .gsc-order :is(button,.BtnGroup-item,.btn):hover{
   background: var(--c-accent) !important;
   color: #fff !important;
-  border-color: transparent !important;
+  border-color: var(--c-white) !important;
 }
 
 /* =========================================================
